@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MiMaster.Master" AutoEventWireup="true" CodeBehind="PagMedicos.aspx.cs" Inherits="Clinica.PagMedicos" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MiMaster.Master" AutoEventWireup="true" CodeBehind="PagPacientes.aspx.cs" Inherits="Clinica.PagPacientes" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
@@ -28,8 +28,7 @@
             </tr>
             <tr>
                 <th scope="row">3</th>
-                <td>Facundo</td>
-                <td>Marcati</td>
+                <td colspan="2">Larry the Bird</td>
                 <td>@twitter</td>
             </tr>
         </tbody>

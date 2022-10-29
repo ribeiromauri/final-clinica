@@ -45,7 +45,7 @@
                                 <a class="nav-link active" aria-current="page" href="PagMedicos.aspx">Médicos</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="#">Pacientes</a>
+                                <a class="nav-link active" aria-current="page" href="PagPacientes.aspx">Pacientes</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link active" aria-current="page" href="#">Turnos</a>

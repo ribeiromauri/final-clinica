@@ -69,6 +69,7 @@
   <ItemGroup>
     <Content Include="Global.asax" />
     <Content Include="PagMedicos.aspx" />
+    <Content Include="PagPacientes.aspx" />
     <Content Include="PagPrincipal.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -89,6 +90,13 @@
     </Compile>
     <Compile Include="PagMedicos.aspx.designer.cs">
       <DependentUpon>PagMedicos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PagPacientes.aspx.cs">
+      <DependentUpon>PagPacientes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PagPacientes.aspx.designer.cs">
+      <DependentUpon>PagPacientes.aspx</DependentUpon>
     </Compile>
     <Compile Include="PagPrincipal.aspx.cs">
       <DependentUpon>PagPrincipal.aspx</DependentUpon>

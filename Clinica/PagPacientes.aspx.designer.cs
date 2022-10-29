@@ -11,7 +11,7 @@ namespace Clinica
 {
 
 
-    public partial class PagPrincipal
+    public partial class PagPacientes
     {
     }
 }
