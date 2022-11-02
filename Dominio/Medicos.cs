@@ -10,6 +10,7 @@ namespace Dominio
     {
         public string Nombre { get; set; }
         public string Apellido { get; set; }
+        public int DNI { get; set; }
         public int Matricula { get; set; }
         public string Domicilio { get; set; }
         public string Email { get; set; }
