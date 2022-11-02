@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace Dominio
 {
-    class HorariosTrabajo
+    public class HorariosTrabajo
     {
+        public string Dia { get; set; }
+        public int HorarioEntrada { get; set; }
+        public int HorarioSalida { get; set; }
+        public bool Libre { get; set; }
     }
 }
