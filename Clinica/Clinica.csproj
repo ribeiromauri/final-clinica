@@ -126,6 +126,10 @@
       <Project>{6f5b5660-f337-487a-8ec3-8a9ce43b63d4}</Project>
       <Name>Controlador</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Dominio\Dominio.csproj">
+      <Project>{3a13a625-bdb2-4e0b-a18f-902730f05fef}</Project>
+      <Name>Dominio</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
