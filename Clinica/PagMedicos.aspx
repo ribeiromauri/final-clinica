@@ -10,28 +10,22 @@
                 <th scope="col">ID</th>
                 <th scope="col">Nombre</th>
                 <th scope="col">Apellido</th>
-                <th scope="col">Especialidades</th>
+                <th scope="col">Matricula</th>
+                <th scope="col">Email</th>
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-            </tr>
-            <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-            </tr>
-            <tr>
-                <th scope="row">3</th>
-                <td>Facundo</td>
-                <td>Marcati</td>
-                <td>@twitter</td>
-            </tr>
+            <asp:Repeater runat="server" ID="repRepetidor">
+                <ItemTemplate>
+                    <tr style="background-color: white">
+                        <th scope="row"><%#Eval("ID") %></th>
+                        <td><%#Eval("Nombre") %></td>
+                        <td><%#Eval("Apellido") %></td>
+                        <td><%#Eval("Matricula") %></td>
+                        <td><%#Eval("Email") %></td>
+                    </tr>
+                </ItemTemplate>
+            </asp:Repeater>
         </tbody>
     </table>
 </asp:Content>
