@@ -26,7 +26,7 @@ namespace Controlador
                     aux.ID = (int)accesoDatos.Lector["ID"];
                     aux.Nombre = (string)accesoDatos.Lector["NOMBRES"];
                     aux.Apellido = (string)accesoDatos.Lector["APELLIDOS"];
-                    aux.DNI = (int)accesoDatos.Lector["DNI"];
+                    aux.DNI = (string)accesoDatos.Lector["DNI"];
                     aux.Domicilio = (string)accesoDatos.Lector["DOMICILIO"];
                     aux.Email = (string)accesoDatos.Lector["EMAIL"];
                     aux.FechaNacimiento = (DateTime)accesoDatos.Lector["FECHA_NACIMIENTO"];
