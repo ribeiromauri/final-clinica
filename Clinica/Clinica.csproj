@@ -68,6 +68,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
+    <Content Include="PagAltas.aspx" />
     <Content Include="PagMedicos.aspx" />
     <Content Include="PagPacientes.aspx" />
     <Content Include="PagPrincipal.aspx" />
@@ -83,6 +84,13 @@
     </Compile>
     <Compile Include="MiMaster.Master.designer.cs">
       <DependentUpon>MiMaster.Master</DependentUpon>
+    </Compile>
+    <Compile Include="PagAltas.aspx.cs">
+      <DependentUpon>PagAltas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PagAltas.aspx.designer.cs">
+      <DependentUpon>PagAltas.aspx</DependentUpon>
     </Compile>
     <Compile Include="PagMedicos.aspx.cs">
       <DependentUpon>PagMedicos.aspx</DependentUpon>
