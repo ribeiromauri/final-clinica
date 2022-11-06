@@ -6,14 +6,11 @@ using System.Threading.Tasks;
 
 namespace Dominio
 {
-    public class Medicos : Usuarios
+    public class Recepcionista : Usuarios
     {
         public string Nombre { get; set; }
         public string Apellido { get; set; }
         public string DNI { get; set; }
-        public int Matricula { get; set; }
         public string Email { get; set; }
-        public List<Especialidades> Especialidad { get; set; }
-        public List<HorariosTrabajo> HorariosTrabajo { get; set; }
     }
 }

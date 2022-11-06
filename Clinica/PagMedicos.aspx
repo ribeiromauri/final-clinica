@@ -12,7 +12,6 @@
                 <th scope="col">Apellido</th>
                 <th scope="col">Número Matricula</th>
                 <th scope="col">Email</th>
-                <th scope="col">Especialidad/es</th>
             </tr>
         </thead>
         <tbody>
@@ -24,7 +23,6 @@
                         <td><%#Eval("Apellido") %></td>
                         <td><%#Eval("Matricula") %></td>
                         <td><%#Eval("Email") %></td>
-                        <td><%#Eval("Especialidad") %></td>
                     </tr>
                 </ItemTemplate>
             </asp:Repeater>

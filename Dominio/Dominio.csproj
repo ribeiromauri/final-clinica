@@ -49,7 +49,7 @@
     <Compile Include="Pacientes.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TipoUsuario.cs" />
+    <Compile Include="Recepcionista.cs" />
     <Compile Include="Turnos.cs" />
     <Compile Include="Usuarios.cs" />
   </ItemGroup>
