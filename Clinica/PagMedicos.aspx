@@ -5,7 +5,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <hr />
     <table class="table table-striped table-bordered">
-        <thead class="table-dark">
+        <thead>
             <tr>
                 <th scope="col">ID</th>
                 <th scope="col">Nombre</th>
@@ -17,7 +17,7 @@
         <tbody>
             <asp:Repeater runat="server" ID="repRepetidor">
                 <ItemTemplate>
-                    <tr style="background-color: white">
+                    <tr>
                         <th scope="row"><%#Eval("ID") %></th>
                         <td><%#Eval("Nombre") %></td>
                         <td><%#Eval("Apellido") %></td>

@@ -90,15 +90,14 @@
             </div>
         </div>
         <div class="col py-3">
-            Content area...
+            <div class="container">
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server"></asp:ContentPlaceHolder>
+        </div>
         </div>
     </div>
 </div>
 
-        <div class="container">
-            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server"></asp:ContentPlaceHolder>
-
-        </div>
+        
         
     </form>
 </body>

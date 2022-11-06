@@ -34,7 +34,7 @@ namespace Controlador
                     aux.Email = (string)accesoDatos.Lector["EMAIL"];
                     aux.Estado = (bool)accesoDatos.Lector["ESTADO"];
 
-                    /*AccesoDatos accesoEspecialidades = new AccesoDatos();
+                    AccesoDatos accesoEspecialidades = new AccesoDatos();
                     accesoEspecialidades.setConsulta("SELECT E.ID as IDE, E.NOMBRE as ESPECIALIDAD FROM ESPECIALIDADES E INNER JOIN ESPECIALIDAD_X_MEDICO ExM ON ExM.ID_ESPECIALIDAD = E.ID INNER JOIN MEDICOS M ON M.ID = ExM.ID_MEDICO WHERE M.ID = @ID");
                     accesoEspecialidades.setParametro("@ID", aux.ID);
                     accesoEspecialidades.ejecutarLectura();
@@ -60,7 +60,7 @@ namespace Controlador
                         horariosTrabajo.HorarioSalida = (int)accesoDatos.Lector["H_SALIDA"];
                         horariosTrabajo.Libre = (bool)accesoDatos.Lector["LIBRE"];
                         aux.HorariosTrabajo.Add(horariosTrabajo);
-                    }*/
+                    }
 
                     lista.Add(aux);
                 }
