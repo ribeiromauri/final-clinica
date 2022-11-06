@@ -45,7 +45,7 @@
                             <i class="fs-4 bi-bootstrap"></i> <span class="ms-1 d-none d-sm-inline">Pacientes</span></a>
                         <ul class="collapse nav flex-column ms-1" id="submenu2" data-bs-parent="#menu">
                             <li class="w-100">
-                                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline" style="padding-left: 3rem; color:white;">Listar pacientes</span></a>
+                                <a href="PagPacientes.aspx" class="nav-link px-0"> <span class="d-none d-sm-inline" style="padding-left: 3rem; color:white;">Listar pacientes</span></a>
                             </li>
                             <li>
                                 <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline" style="padding-left: 3rem; color:white;">Agregar paciente</span></a>
