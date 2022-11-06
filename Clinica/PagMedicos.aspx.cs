@@ -16,6 +16,7 @@ namespace Clinica
         {
             ControladorMedicos controlador = new ControladorMedicos();
             listaMedicos = controlador.listar();
+            Medicos aux = new Medicos();
 
             if (!IsPostBack)
             {
