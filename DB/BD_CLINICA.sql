@@ -189,6 +189,32 @@ BEGIN
 END
 GO
 
+CREATE PROCEDURE SP_MODIFICAR_PACIENTE(
+	@Nombre varchar(50),
+	@Apellido varchar(50),
+	@DNI varchar(20),
+	@Domicilio varchar(50),
+	@Email varchar(50),
+	@FechaNacimiento date,
+	@ID int
+)
+AS
+BEGIN
+	BEGIN TRY
+		BEGIN TRANSACTION
+			UPDATE PACIENTES SET NOMBRES = @Nombre, APELLIDOS = @Apellido, DNI = @DNI, DOMICILIO = @Domicilio, EMAIL = @Email, FECHA_NACIMIENTO = @FechaNacimiento
+			WHERE ID = @ID
+
+		COMMIT TRANSACTION
+	END TRY
+	
+	BEGIN CATCH
+		RAISERROR('No se pudo modificar el registro', 16, 1)
+		ROLLBACK TRANSACTION
+	END CATCH
+END
+GO
+
 EXECUTE SP_ALTA_MEDICO 'Mauricio', 'Ribeiro', 1337, 41079285, 'mauri@gmail.com', 'mauri123'
 EXECUTE SP_ALTA_MEDICO 'Facundo', 'Marcati', 2448, 43182968, 'facu@gmail.com', 'facu123'
 

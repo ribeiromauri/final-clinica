@@ -22,6 +22,7 @@ namespace Clinica
                 repRepetidor.DataSource = ListaPacientes;
                 repRepetidor.DataBind();
             }
+
         }
     }
 }

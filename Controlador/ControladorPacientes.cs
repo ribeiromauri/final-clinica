@@ -10,14 +10,21 @@ namespace Controlador
 {
     public class ControladorPacientes
     {
-        public List<Pacientes> listar()
+        public List<Pacientes> listar(string id = "")
         {
             List<Pacientes> lista = new List<Pacientes>();
             AccesoDatos accesoDatos = new AccesoDatos();
 
             try
             {
-                accesoDatos.setConsulta("SELECT ID, NOMBRES, APELLIDOS, DNI, DOMICILIO, EMAIL, FECHA_NACIMIENTO, ESTADO FROM PACIENTES");
+                if(id != "")
+                {
+                    accesoDatos.setConsulta("SELECT ID, NOMBRES, APELLIDOS, DNI, DOMICILIO, EMAIL, FECHA_NACIMIENTO, ESTADO FROM PACIENTES WHERE ID = @ID");
+                    accesoDatos.setParametro("@ID", id);
+                }
+                else{
+                    accesoDatos.setConsulta("SELECT ID, NOMBRES, APELLIDOS, DNI, DOMICILIO, EMAIL, FECHA_NACIMIENTO, ESTADO FROM PACIENTES");
+                }
                 accesoDatos.ejecutarLectura();
 
                 while (accesoDatos.Lector.Read())
@@ -65,6 +72,48 @@ namespace Controlador
             catch (Exception ex)
             {
                 throw ex;
+            }
+        }
+
+        public void modificarConSP(Pacientes nuevo)
+        {
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setProcedimiento("SP_MODIFICAR_PACIENTE");
+                datos.setParametro("@Nombre", nuevo.Nombre);
+                datos.setParametro("@Apellido", nuevo.Apellido);
+                datos.setParametro("@DNI", nuevo.DNI);
+                datos.setParametro("@Domicilio", nuevo.Domicilio);
+                datos.setParametro("@Email", nuevo.Email);
+                datos.setParametro("@FechaNacimiento", nuevo.FechaNacimiento);
+                datos.setParametro("@ID", nuevo.ID);
+
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public void eliminar(int ID)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setConsulta("DELETE FROM PACIENTES WHERE ID = @id");
+                datos.setParametro("@id", ID);
+                datos.ejecutarLectura();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
             }
         }
     }

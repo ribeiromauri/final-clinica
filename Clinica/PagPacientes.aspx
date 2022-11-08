@@ -12,6 +12,7 @@
                 <th scope="col">Nombre</th>
                 <th scope="col">Apellido</th>
                 <th scope="col">Email</th>
+                <th scope="col">Accion</th>
             </tr>
         </thead>
         <tbody>
@@ -23,9 +24,14 @@
                         <td><%#Eval("Nombre") %></td>
                         <td><%#Eval("Apellido") %></td>
                         <td><%#Eval("Email") %></td>
+                        <td>
+                            <a href="PagAltaPaciente.aspx?id=<%#Eval("ID") %>">Accion</a>
+                        </td>
                     </tr>
                 </ItemTemplate>
             </asp:Repeater>
         </tbody>
     </table>
+    <a href="PagAltaPaciente.aspx" class="btn btn-primary">Agregar Paciente</a>
+
 </asp:Content>
