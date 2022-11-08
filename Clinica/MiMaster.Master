@@ -48,7 +48,7 @@
                                 <a href="PagPacientes.aspx" class="nav-link px-0"> <span class="d-none d-sm-inline" style="padding-left: 3rem; color:white;">Listar pacientes</span></a>
                             </li>
                             <li>
-                                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline" style="padding-left: 3rem; color:white;">Agregar paciente</span></a>
+                                <a href="PagAltaPaciente.aspx" class="nav-link px-0"> <span class="d-none d-sm-inline" style="padding-left: 3rem; color:white;">Agregar paciente</span></a>
                             </li>
                         </ul>
                     </li>

@@ -45,9 +45,30 @@ namespace Controlador
             }
         }
 
+        public void ejecutarAccion()
+        {
+            comando.Connection = conexion;
+            try
+            {
+                conexion.Open();
+                comando.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
         public void setParametro(string nombre, object valor)
         {
             comando.Parameters.AddWithValue(nombre, valor);
+        }
+
+        public void setProcedimiento(string sp)
+        {
+            comando.CommandType = System.Data.CommandType.StoredProcedure;
+            comando.CommandText = sp;
         }
 
         public void cerrarConexion()

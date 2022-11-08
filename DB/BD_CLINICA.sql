@@ -162,7 +162,32 @@ BEGIN
 		ROLLBACK TRANSACTION
 	END CATCH
 END
+GO
 
+--SP PARA DAR DE ALTA UN PACIENTE
+CREATE PROCEDURE SP_ALTA_PACIENTE(
+	@Nombre varchar(50),
+	@Apellido varchar(50),
+	@DNI varchar(20),
+	@Domicilio varchar(50),
+	@Email varchar(50),
+	@FechaNacimiento date
+)
+AS
+BEGIN
+	BEGIN TRY
+		BEGIN TRANSACTION
+			INSERT INTO PACIENTES VALUES(@Nombre, @Apellido, @DNI, @Domicilio, @Email, @FechaNacimiento, 1)
+
+		COMMIT TRANSACTION
+	END TRY
+	
+	BEGIN CATCH
+		RAISERROR('No se pudo dar de alta el registro', 16, 1)
+		ROLLBACK TRANSACTION
+	END CATCH
+END
+GO
 
 EXECUTE SP_ALTA_MEDICO 'Mauricio', 'Ribeiro', 1337, 41079285, 'mauri@gmail.com', 'mauri123'
 EXECUTE SP_ALTA_MEDICO 'Facundo', 'Marcati', 2448, 43182968, 'facu@gmail.com', 'facu123'

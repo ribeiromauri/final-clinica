@@ -46,5 +46,26 @@ namespace Controlador
                 accesoDatos.cerrarConexion();
             }
         }
+
+        public void agregarConSP(Pacientes nuevo)
+        {
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setProcedimiento("SP_ALTA_PACIENTE");
+                datos.setParametro("@Nombre", nuevo.Nombre);
+                datos.setParametro("@Apellido", nuevo.Apellido);
+                datos.setParametro("@DNI", nuevo.DNI);
+                datos.setParametro("@Domicilio", nuevo.Domicilio);
+                datos.setParametro("@Email", nuevo.Email);
+                datos.setParametro("@FechaNacimiento", nuevo.FechaNacimiento);
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }
