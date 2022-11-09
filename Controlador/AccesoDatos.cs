@@ -79,5 +79,10 @@ namespace Controlador
             }
             conexion.Close();
         }
+
+        public void limpiarParametros()
+        {
+            comando.Parameters.Clear();
+        }
     }
 }

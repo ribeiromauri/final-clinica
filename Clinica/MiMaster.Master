@@ -61,7 +61,7 @@
                                 <a href="PagMedicos.aspx" class="nav-link px-0"> <span class="d-none d-sm-inline" style="padding-left: 3rem; color:white;">Listar médicos</span></a>
                             </li>
                             <li>
-                                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline" style="padding-left: 3rem; color:white;">Agregar médico</span></a>
+                                <a href="PagAltaMedico.aspx" class="nav-link px-0"> <span class="d-none d-sm-inline" style="padding-left: 3rem; color:white;">Agregar médico</span></a>
                             </li>
                             
                         </ul>

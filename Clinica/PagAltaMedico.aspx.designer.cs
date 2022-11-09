@@ -60,6 +60,15 @@ namespace Clinica
         protected global::System.Web.UI.WebControls.TextBox emailMedico;
 
         /// <summary>
+        /// Control passMedico.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox passMedico;
+
+        /// <summary>
         /// Control chkEspecialidades.
         /// </summary>
         /// <remarks>
@@ -76,5 +85,14 @@ namespace Clinica
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Agregar;
+
+        /// <summary>
+        /// Control ValidacionMedico.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label ValidacionMedico;
     }
 }

@@ -25,12 +25,16 @@
     </div>
     <div class="mb-3">
        <label class="form-label">Email</label>
-        <asp:TextBox CssClass="form-control inputSize" ID="emailMedico" runat="server"></asp:TextBox>
+        <asp:TextBox CssClass="form-control inputSize" ID="emailMedico" runat="server" type="email"></asp:TextBox>
+    </div>
+        <div class="mb-3">
+       <label class="form-label">Contraseña</label>
+        <asp:TextBox CssClass="form-control inputSize" ID="passMedico" runat="server" type="password"></asp:TextBox>
     </div>
     <h6>Seleccionar especialidad:</h6>
-    <asp:CheckBoxList ID="chkEspecialidades" runat="server"></asp:CheckBoxList>
+    <asp:CheckBoxList ID="chkEspecialidades" runat="server" RepeatColumns="3"></asp:CheckBoxList>
 
     </div>
     <asp:Button ID="Agregar" runat="server" Text="Agregar" CssClass="btn btn-primary" OnClick="Agregar_Click"/>
-    <a class="btn btn-danger" href="PagMedicos.aspx">Volver</a>
+    <h5 style="padding-top:20px;"> <asp:Label ID="ValidacionMedico" cssclass="h5" runat="server" /></h5>
 </asp:Content>

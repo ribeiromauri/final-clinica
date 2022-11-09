@@ -10,10 +10,11 @@ namespace Controlador
 {
     public class ControladorMedicos
     {
+        AccesoDatos accesoDatos = new AccesoDatos();
         public List<Medicos> listar()
         {
             List<Medicos> lista = new List<Medicos>();
-            AccesoDatos accesoDatos = new AccesoDatos();
+            
 
             try
             {
@@ -76,6 +77,27 @@ namespace Controlador
             {
                 accesoDatos.cerrarConexion();
             }
+        }
+
+        public bool AgregarMedico(Medicos obj)
+        {
+            try
+            {
+                accesoDatos.setProcedimiento("SP_ALTA_MEDICO");
+                accesoDatos.setParametro("@NOMBRE", obj.Nombre);
+                accesoDatos.setParametro("@APELLIDO", obj.Apellido);
+                accesoDatos.setParametro("@MATRICULA", obj.Matricula);
+                accesoDatos.setParametro("@DNI", obj.DNI);
+                accesoDatos.setParametro("@EMAIL", obj.Email);
+                accesoDatos.setParametro("@CONTRASEÑA", obj.Contrasenia);
+                accesoDatos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                return false;
+                throw ex;
+            }
+            return true;
         }
     }
 }

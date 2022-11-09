@@ -9,10 +9,10 @@ namespace Controlador
 {
     public class ControladorEspecialidades
     {
+        AccesoDatos datos = new AccesoDatos();
         public List<Especialidades> ListarEspecialidades()
         {
             List<Especialidades> lista = new List<Especialidades>();
-            AccesoDatos datos = new AccesoDatos();
             try
             {
                 datos.setConsulta("SELECT ID, NOMBRE FROM ESPECIALIDADES");
@@ -36,6 +36,26 @@ namespace Controlador
             finally
             {
                 datos.cerrarConexion();
+            }
+        }
+        public bool AgregarEspecialidadPorMedico(Medicos aux)
+        {
+            try
+            {
+                foreach (Especialidades especialidad in aux.Especialidad)
+                {
+                    datos.setConsulta("INSERT INTO ESPECIALIDAD_X_MEDICO VALUES (@ID_MEDICO, @ID_ESPECIALIDAD)");
+                    datos.setParametro("@ID_MEDICO", aux.ID);
+                    datos.setParametro("@ID_ESPECIALIDAD", especialidad.ID);
+                    datos.ejecutarAccion();
+                    datos.limpiarParametros();
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+                throw ex;
             }
         }
     }
