@@ -9,6 +9,8 @@ namespace Controlador
 {
     public class ControladorEspecialidades
     {
+        public List<Medicos> ListaMedicos { get; set; }
+
         AccesoDatos datos = new AccesoDatos();
         public List<Especialidades> ListarEspecialidades()
         {
@@ -40,15 +42,27 @@ namespace Controlador
         }
         public bool AgregarEspecialidadPorMedico(Medicos aux)
         {
+            int id = 0;
+            ControladorMedicos controlador = new ControladorMedicos();
+            ListaMedicos = controlador.listar();
+
+            foreach (Medicos medico in ListaMedicos)
+            {
+                if (aux.Matricula == medico.Matricula) //o comparar con el DNI
+                {
+                    id = medico.ID;
+                }
+            }
             try
             {
                 foreach (Especialidades especialidad in aux.Especialidad)
                 {
                     datos.setConsulta("INSERT INTO ESPECIALIDAD_X_MEDICO VALUES (@ID_MEDICO, @ID_ESPECIALIDAD)");
-                    datos.setParametro("@ID_MEDICO", aux.ID);
+                    datos.setParametro("@ID_MEDICO", id);
                     datos.setParametro("@ID_ESPECIALIDAD", especialidad.ID);
                     datos.ejecutarAccion();
                     datos.limpiarParametros();
+                    datos.cerrarConexion();
                 }
                 return true;
             }

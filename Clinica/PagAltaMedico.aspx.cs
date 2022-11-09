@@ -64,7 +64,7 @@ namespace Clinica
                 auxMedico.Especialidad = espSeleccionadas;
                 if (ctrlMedico.AgregarMedico(auxMedico)){
                     ctrlEspecialidades.AgregarEspecialidadPorMedico(auxMedico);
-                    ValidacionMedico.Text = "Médico dado de alta con éxito";
+                    Response.Redirect("PagMedicos.aspx", false);
                 }
             }
             catch (Exception ex)

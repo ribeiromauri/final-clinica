@@ -7,28 +7,37 @@
         <p>FORMULARIO PACIENTE</p>
     </div>
     <div class="mb-3">
+        <label class="form-label">Nombre</label>
         <asp:TextBox runat="server" ID="txtNombre" CssClass="form-control" placeholder="Ingresar Nombre" />
     </div>
     <div class="mb-3">
+        <label class="form-label">Apellido</label>
         <asp:TextBox runat="server" ID="txtApellido" CssClass="form-control" placeholder="Ingresar Apellido" />
     </div>
     <div class="mb-3">
+        <label class="form-label">DNI</label>
         <asp:TextBox runat="server" ID="txtDNI" CssClass="form-control" placeholder="Ingresar DNI" />
     </div>
     <div class="mb-3">
+        <label class="form-label">Domicilio</label>
         <asp:TextBox runat="server" ID="txtDomicilio" CssClass="form-control" placeholder="Ingresar Domicilio" />
     </div>
     <div class="mb-3">
+        <label class="form-label">Email</label>
         <asp:TextBox runat="server" ID="txtEmail" CssClass="form-control" placeholder="Ingresar Email" />
     </div>
     <div class="mb-3">
+        <label class="form-label">Fecha Nacimiento</label>
         <asp:TextBox runat="server" ID="txtFechaNacimiento" CssClass="form-control" placeholder="Ingresar Fecha Nacimiento" />
     </div>
     <div class="row">
         <div class="mb-3">
             <asp:Button ID="btnAceptar" runat="server" Text="Aceptar" class="btn btn-success" OnClick="btnAceptar_Click" />
             <a class="btn btn-warning" href="PagPacientes.aspx">Volver</a>
+            <%if (BotonEliminar)
+                {%>
             <asp:Button ID="btnEliminar" runat="server" Text="Eliminar" class="btn btn-danger" OnClick="btnEliminar_Click" />
+            <%} %>
             <%if (ConfirmarEliminacion)
                 {%>
             <hr />

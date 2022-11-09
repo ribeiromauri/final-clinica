@@ -28,5 +28,5 @@
             </asp:Repeater>
         </tbody>
     </table>
-    <a class="btn btn-primary" href="PagAltas.aspx">Alta Medico</a>
+    <a class="btn btn-primary" href="PagAltaMedico.aspx">Alta Medico</a>
 </asp:Content>

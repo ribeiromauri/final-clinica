@@ -12,10 +12,16 @@ namespace Clinica
     public partial class PagAltaPaciente : System.Web.UI.Page
     {
         public bool ConfirmarEliminacion { get; set; }
+        public bool BotonEliminar { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
             ConfirmarEliminacion = false;
+            BotonEliminar = false;
 
+            if (Request.QueryString["id"] != null)
+            {
+                BotonEliminar = true;
+            }
             if (Request.QueryString["id"] != null && !IsPostBack)
             {
                 ControladorPacientes cont = new ControladorPacientes();
