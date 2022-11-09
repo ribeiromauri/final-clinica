@@ -52,26 +52,39 @@ namespace Clinica
                 auxMedico.Contrasenia = passMedico.Text;
 
                 //Validar datos antes de cargar el registro
-
-                foreach (ListItem item in chkEspecialidades.Items)
+                if(ValidarDatos(auxMedico.Matricula, auxMedico.Email, auxMedico.DNI))
                 {
-                    if(item.Selected == true)
+                    foreach (ListItem item in chkEspecialidades.Items)
                     {
-                        espSeleccionadas.Add(listaEspecialidades.Find(x => x.Nombre == item.Value));
+                        if (item.Selected == true)
+                        {
+                            espSeleccionadas.Add(listaEspecialidades.Find(x => x.Nombre == item.Value));
+                        }
+                    }
+
+                    auxMedico.Especialidad = espSeleccionadas;
+                    if (ctrlMedico.AgregarMedico(auxMedico))
+                    {
+                        ctrlEspecialidades.AgregarEspecialidadPorMedico(auxMedico);
+                        Response.Redirect("PagMedicos.aspx", false);
                     }
                 }
-
-                auxMedico.Especialidad = espSeleccionadas;
-                if (ctrlMedico.AgregarMedico(auxMedico)){
-                    ctrlEspecialidades.AgregarEspecialidadPorMedico(auxMedico);
-                    Response.Redirect("PagMedicos.aspx", false);
-                }
+                return;
             }
             catch (Exception ex)
             {
 
                 throw ex;
             }
+        }
+
+        private bool ValidarDatos(int matricula, string email, string dni)
+        {
+            List<Medicos> listaMedicos = ctrlMedico.listar();
+            if (listaMedicos.Exists(x => x.Matricula == matricula)) return false;
+            if (listaMedicos.Exists(x => x.Email == email)) return false;
+            if (listaMedicos.Exists(x => x.DNI == dni)) return false;
+            return true;
         }
     }
 }
