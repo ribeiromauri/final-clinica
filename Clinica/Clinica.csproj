@@ -69,7 +69,7 @@
   <ItemGroup>
     <Content Include="Global.asax" />
     <Content Include="PagAltaPaciente.aspx" />
-    <Content Include="PagAltas.aspx" />
+    <Content Include="PagAltaMedico.aspx" />
     <Content Include="PagMedicos.aspx" />
     <Content Include="PagPacientes.aspx" />
     <Content Include="PagPrincipal.aspx" />
@@ -93,12 +93,12 @@
     <Compile Include="PagAltaPaciente.aspx.designer.cs">
       <DependentUpon>PagAltaPaciente.aspx</DependentUpon>
     </Compile>
-    <Compile Include="PagAltas.aspx.cs">
-      <DependentUpon>PagAltas.aspx</DependentUpon>
+    <Compile Include="PagAltaMedico.aspx.cs">
+      <DependentUpon>PagAltaMedico.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="PagAltas.aspx.designer.cs">
-      <DependentUpon>PagAltas.aspx</DependentUpon>
+    <Compile Include="PagAltaMedico.aspx.designer.cs">
+      <DependentUpon>PagAltaMedico.aspx</DependentUpon>
     </Compile>
     <Compile Include="PagMedicos.aspx.cs">
       <DependentUpon>PagMedicos.aspx</DependentUpon>
