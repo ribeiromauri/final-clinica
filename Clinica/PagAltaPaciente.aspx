@@ -8,27 +8,27 @@
     </div>
     <div class="mb-3">
         <label class="form-label">Nombre</label>
-        <asp:TextBox runat="server" ID="txtNombre" CssClass="form-control" placeholder="Ingresar Nombre" />
+        <asp:TextBox runat="server" ID="txtNombre" CssClass="form-control" placeholder="Ingresar Nombre" required = "required"/>
     </div>
     <div class="mb-3">
         <label class="form-label">Apellido</label>
-        <asp:TextBox runat="server" ID="txtApellido" CssClass="form-control" placeholder="Ingresar Apellido" />
+        <asp:TextBox runat="server" ID="txtApellido" CssClass="form-control" placeholder="Ingresar Apellido" required = "required"/>
     </div>
     <div class="mb-3">
         <label class="form-label">DNI</label>
-        <asp:TextBox runat="server" ID="txtDNI" CssClass="form-control" placeholder="Ingresar DNI" />
+        <asp:TextBox runat="server" ID="txtDNI" CssClass="form-control" placeholder="Ingresar DNI" required = "required" textmode="Number" />
     </div>
     <div class="mb-3">
         <label class="form-label">Domicilio</label>
-        <asp:TextBox runat="server" ID="txtDomicilio" CssClass="form-control" placeholder="Ingresar Domicilio" />
+        <asp:TextBox runat="server" ID="txtDomicilio" CssClass="form-control" placeholder="Ingresar Domicilio" required = "required"/>
     </div>
     <div class="mb-3">
         <label class="form-label">Email</label>
-        <asp:TextBox runat="server" ID="txtEmail" CssClass="form-control" placeholder="Ingresar Email" />
+        <asp:TextBox runat="server" ID="txtEmail" CssClass="form-control" placeholder="Ingresar Email" required = "required" type="email"/>
     </div>
     <div class="mb-3">
         <label class="form-label">Fecha Nacimiento</label>
-        <asp:TextBox runat="server" ID="txtFechaNacimiento" CssClass="form-control" placeholder="Ingresar Fecha Nacimiento" />
+        <asp:TextBox runat="server" ID="txtFechaNacimiento" CssClass="form-control" placeholder="Ingresar Fecha Nacimiento" required = "required"/>
     </div>
     <div class="row">
         <div class="mb-3">
