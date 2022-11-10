@@ -81,9 +81,21 @@ namespace Clinica
         private bool ValidarDatos(int matricula, string email, string dni)
         {
             List<Medicos> listaMedicos = ctrlMedico.listar();
-            if (listaMedicos.Exists(x => x.Matricula == matricula)) return false;
-            if (listaMedicos.Exists(x => x.Email == email)) return false;
-            if (listaMedicos.Exists(x => x.DNI == dni)) return false;
+            if (listaMedicos.Exists(x => x.Matricula == matricula))
+            {
+                Validaciones.Text = "Ya existe registro con número de matrícula " + auxMedico.Matricula.ToString();
+                return false;
+            }
+            if (listaMedicos.Exists(x => x.Email == email)) 
+            {
+                Validaciones.Text = "Ya existe registro con mail " + auxMedico.Email;
+                return false;
+            }
+            if (listaMedicos.Exists(x => x.DNI == dni)) 
+            {
+                Validaciones.Text = "Ya existe registro con DNI " + auxMedico.DNI;
+                return false;
+            } 
             return true;
         }
     }

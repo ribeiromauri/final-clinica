@@ -11,71 +11,53 @@ namespace Clinica
 {
 
 
-    public partial class PagAltas
+    public partial class PagAltaRecepcionista
     {
 
         /// <summary>
-        /// Control nombreMedico.
+        /// Control nombreRecepcionista.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox nombreMedico;
+        protected global::System.Web.UI.WebControls.TextBox nombreRecepcionista;
 
         /// <summary>
-        /// Control apellidoMedico.
+        /// Control apellidoRecepcionista.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox apellidoMedico;
+        protected global::System.Web.UI.WebControls.TextBox apellidoRecepcionista;
 
         /// <summary>
-        /// Control dniMedico.
+        /// Control dniRecepcionista.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox dniMedico;
+        protected global::System.Web.UI.WebControls.TextBox dniRecepcionista;
 
         /// <summary>
-        /// Control matriculaMedico.
+        /// Control emailRecepcionista.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox matriculaMedico;
+        protected global::System.Web.UI.WebControls.TextBox emailRecepcionista;
 
         /// <summary>
-        /// Control emailMedico.
+        /// Control passRecepcionista.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox emailMedico;
-
-        /// <summary>
-        /// Control passMedico.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox passMedico;
-
-        /// <summary>
-        /// Control chkEspecialidades.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBoxList chkEspecialidades;
+        protected global::System.Web.UI.WebControls.TextBox passRecepcionista;
 
         /// <summary>
         /// Control Agregar.

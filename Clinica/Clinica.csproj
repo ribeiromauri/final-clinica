@@ -70,6 +70,7 @@
     <Content Include="Global.asax" />
     <Content Include="PagAltaPaciente.aspx" />
     <Content Include="PagAltaMedico.aspx" />
+    <Content Include="PagAltaRecepcionista.aspx" />
     <Content Include="PagMedicos.aspx" />
     <Content Include="PagPacientes.aspx" />
     <Content Include="PagPrincipal.aspx" />
@@ -99,6 +100,13 @@
     </Compile>
     <Compile Include="PagAltaMedico.aspx.designer.cs">
       <DependentUpon>PagAltaMedico.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PagAltaRecepcionista.aspx.cs">
+      <DependentUpon>PagAltaRecepcionista.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PagAltaRecepcionista.aspx.designer.cs">
+      <DependentUpon>PagAltaRecepcionista.aspx</DependentUpon>
     </Compile>
     <Compile Include="PagMedicos.aspx.cs">
       <DependentUpon>PagMedicos.aspx</DependentUpon>

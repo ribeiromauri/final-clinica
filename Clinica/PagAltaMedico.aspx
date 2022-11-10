@@ -21,7 +21,7 @@
         </div>
         <div class="mb-3">
             <label class="form-label">Matricula</label>
-            <asp:TextBox CssClass="form-control inputSize" ID="matriculaMedico" runat="server" required = "required"></asp:TextBox>
+            <asp:TextBox CssClass="form-control inputSize" ID="matriculaMedico" runat="server" required = "required" TextMode="Number"></asp:TextBox>
         </div>
         <div class="mb-3">
             <label class="form-label">Email</label>
@@ -39,4 +39,5 @@
         <asp:Button ID="Agregar" runat="server" Text="Agregar" CssClass="btn btn-success" OnClick="Agregar_Click" />
         <a href="PagMedicos.aspx" class="btn btn-warning">Volver</a>
     </div>
+    <h5 style="padding-top:20px;"><asp:Label ID="Validaciones" cssclass="h5" runat="server" /></h5>
 </asp:Content>
