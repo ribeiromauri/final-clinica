@@ -10,21 +10,29 @@ namespace Controlador
     public class ControladorRecepcionista
     {
         AccesoDatos datos = new AccesoDatos();
-        public List<Recepcionista> ListarRecepcionistas()
+        public List<Recepcionista> ListarRecepcionistas(string id = "")
         {
             List<Recepcionista> lista = new List<Recepcionista>();
             try
             {
-                datos.setConsulta("SELECT ID, CONTRASEÑA, NOMBRES, APELLIDOS, DNI, EMAIL, ESTADO FROM RECEPCIONISTA");
+                if (id != "")
+                {
+                    datos.setConsulta("SELECT ID, CONTRASEÑA, NOMBRES, APELLIDOS, DNI, EMAIL, ESTADO FROM RECEPCIONISTA WHERE ID = @ID");
+                    datos.setParametro("@ID", id);
+                }
+                else
+                {
+                    datos.setConsulta("SELECT ID, CONTRASEÑA, NOMBRES, APELLIDOS, DNI, EMAIL, ESTADO FROM RECEPCIONISTA");
+                }
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())
                 {
                     Recepcionista aux = new Recepcionista();
-                    
+
                     aux.ID = (int)datos.Lector["ID"];
                     aux.Contrasenia = (string)datos.Lector["CONTRASEÑA"];
-                    aux.Nombre = (string)datos.Lector["NOMBRE"];
+                    aux.Nombre = (string)datos.Lector["NOMBRES"];
                     aux.Apellido = (string)datos.Lector["APELLIDOS"];
                     aux.DNI = (string)datos.Lector["DNI"];
                     aux.Email = (string)datos.Lector["EMAIL"];
@@ -48,7 +56,7 @@ namespace Controlador
         {
             try
             {
-                datos.setProcedimiento("SP_ALTA_MEDICO");
+                datos.setProcedimiento("SP_ALTA_RECEPCIONISTA");
                 datos.setParametro("@NOMBRE", obj.Nombre);
                 datos.setParametro("@APELLIDO", obj.Apellido);
                 datos.setParametro("@DNI", obj.DNI);
@@ -62,6 +70,49 @@ namespace Controlador
                 throw ex;
             }
             return true;
+        }
+
+        public void modificarRecepcionista(Recepcionista nuevo)
+        {
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setProcedimiento("SP_MODIFICAR_RECEPCIONISTA");
+
+                datos.setParametro("@Nombre", nuevo.Nombre);
+                datos.setParametro("@Apellido", nuevo.Apellido);
+                datos.setParametro("@DNI", nuevo.DNI);
+                datos.setParametro("@Email", nuevo.Email);
+                datos.setParametro("Contrasenia", nuevo.Contrasenia);
+                datos.setParametro("@ID", nuevo.ID);
+
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
+        public void eliminarRecepcionista(int ID)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setProcedimiento("SP_ELIMINAR_RECEPCIONISTA");
+                datos.setParametro("@ID", ID);
+                datos.ejecutarLectura();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
         }
     }
 }

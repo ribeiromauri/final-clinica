@@ -74,6 +74,7 @@
     <Content Include="PagMedicos.aspx" />
     <Content Include="PagPacientes.aspx" />
     <Content Include="PagPrincipal.aspx" />
+    <Content Include="PagRecepcionista.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -128,6 +129,13 @@
     </Compile>
     <Compile Include="PagPrincipal.aspx.designer.cs">
       <DependentUpon>PagPrincipal.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PagRecepcionista.aspx.cs">
+      <DependentUpon>PagRecepcionista.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PagRecepcionista.aspx.designer.cs">
+      <DependentUpon>PagRecepcionista.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

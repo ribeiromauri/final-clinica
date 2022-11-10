@@ -67,6 +67,20 @@
                         </ul>
                     </li>
 
+                    <li>
+                        <a href="#submenu5" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
+                            <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline">Recepcionistas</span> </a>
+                            <ul class="collapse nav flex-column ms-1" id="submenu5" data-bs-parent="#menu">
+                            <li class="w-100">
+                                <a href="PagRecepcionista.aspx" class="nav-link px-0"> <span class="d-none d-sm-inline" style="padding-left: 3rem; color:white;">Listar recepcionistas</span></a>
+                            </li>
+                            <li>
+                                <a href="PagAltaRecepcionista.aspx" class="nav-link px-0"> <span class="d-none d-sm-inline" style="padding-left: 3rem; color:white;">Agregar recepcionista</span></a>
+                            </li>
+                            
+                        </ul>
+                    </li>
+
                      <li>
                         <a href="#submenu4" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
                             <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline">Usuarios</span> </a>
@@ -76,20 +90,6 @@
                             </li>
                             <li>
                                 <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline" style="padding-left: 3rem; color:white;">Agregar usuario</span></a>
-                            </li>
-                            
-                        </ul>
-                    </li>
-
-                    <li>
-                        <a href="#submenu5" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
-                            <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline">Recepcionistas</span> </a>
-                            <ul class="collapse nav flex-column ms-1" id="submenu5" data-bs-parent="#menu">
-                            <li class="w-100">
-                                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline" style="padding-left: 3rem; color:white;">Listar recepcionistas</span></a>
-                            </li>
-                            <li>
-                                <a href="PagAltaRecepcionista.aspx" class="nav-link px-0"> <span class="d-none d-sm-inline" style="padding-left: 3rem; color:white;">Agregar recepcionista</span></a>
                             </li>
                             
                         </ul>
