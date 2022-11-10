@@ -17,7 +17,7 @@
         </div>
         <div class="mb-3">
             <label class="form-label">DNI</label>
-            <asp:TextBox CssClass="form-control inputSize" ID="dniMedico" runat="server" required = "required"></asp:TextBox>
+            <asp:TextBox CssClass="form-control inputSize" ID="dniMedico" runat="server" required = "required" TextMode="Number"></asp:TextBox>
         </div>
         <div class="mb-3">
             <label class="form-label">Matricula</label>
