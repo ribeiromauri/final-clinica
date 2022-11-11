@@ -157,7 +157,7 @@ namespace Clinica
                 {
                     ControladorMedicos controlador = new ControladorMedicos();
                     controlador.EliminarMedico(int.Parse(Request.QueryString["id"]));
-                    Response.Redirect("PagMedico.aspx");
+                    Response.Redirect("PagMedicos.aspx");
                 }
             }
             catch (Exception ex)
