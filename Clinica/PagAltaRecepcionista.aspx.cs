@@ -59,9 +59,7 @@ namespace Clinica
                 }
                 else if (ValidarDatos(aux.DNI, aux.Email))
                 {
-                    if (ctrlRecepcionista.AgregarRecepcionista(aux))
-                    {
-                    }
+                    ctrlRecepcionista.AgregarRecepcionista(aux);
                 }
                 Response.Redirect("PagRecepcionista.aspx", false);
             }

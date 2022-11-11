@@ -72,5 +72,24 @@ namespace Controlador
                 throw ex;
             }
         }
+
+        public void EliminarEspecialidadPorMedico(int ID)
+        {
+            ControladorMedicos controlador = new ControladorMedicos();
+            ListaMedicos = controlador.listar();
+
+            try
+            {
+                datos.setProcedimiento("SP_ELIMINAR_ESPECIALIDADxMEDICO");
+                datos.setParametro("@ID", ID);
+                datos.ejecutarAccion();
+                datos.cerrarConexion();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
     }
 }

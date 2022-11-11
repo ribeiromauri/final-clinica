@@ -11,14 +11,21 @@ namespace Controlador
     public class ControladorMedicos
     {
         AccesoDatos accesoDatos = new AccesoDatos();
-        public List<Medicos> listar()
+        public List<Medicos> listar(string id = "")
         {
             List<Medicos> lista = new List<Medicos>();
             
-
             try
             {
-                accesoDatos.setConsulta("SELECT ID, NOMBRES, APELLIDOS, DNI, MATRICULA, EMAIL, ESTADO FROM MEDICOS");
+                if(id != "")
+                {
+                    accesoDatos.setConsulta("SELECT ID, CONTRASEÑA, NOMBRES, APELLIDOS, DNI, MATRICULA, EMAIL, ESTADO FROM MEDICOS WHERE ID = @ID");
+                    accesoDatos.setParametro("@ID", id);
+                }
+                else
+                {
+                    accesoDatos.setConsulta("SELECT ID, CONTRASEÑA, NOMBRES, APELLIDOS, DNI, MATRICULA, EMAIL, ESTADO FROM MEDICOS");
+                }
                 accesoDatos.ejecutarLectura();
 
                 while (accesoDatos.Lector.Read())
@@ -33,6 +40,7 @@ namespace Controlador
                     aux.DNI = (string)accesoDatos.Lector["DNI"];
                     aux.Matricula = (int)accesoDatos.Lector["MATRICULA"];
                     aux.Email = (string)accesoDatos.Lector["EMAIL"];
+                    aux.Contrasenia = (string)accesoDatos.Lector["CONTRASEÑA"];
                     aux.Estado = (bool)accesoDatos.Lector["ESTADO"];
 
                     AccesoDatos accesoEspecialidades = new AccesoDatos();
@@ -98,6 +106,48 @@ namespace Controlador
                 throw ex;
             }
             return true;
+        }
+
+        public void ModificarMedico(Medicos nuevo)
+        {
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setProcedimiento("SP_MODIFICAR_MEDICO");
+
+                datos.setParametro("@Nombres", nuevo.Nombre);
+                datos.setParametro("@Apellidos", nuevo.Apellido);
+                datos.setParametro("@DNI", nuevo.DNI);
+                datos.setParametro("@Matricula", nuevo.Matricula);
+                datos.setParametro("@Email", nuevo.Email);
+                datos.setParametro("Contraseña", nuevo.Contrasenia);
+                datos.setParametro("@ID", nuevo.ID);
+
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
+        public void EliminarMedico(int ID)
+        {
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setProcedimiento("SP_ELIMINAR_MEDICO");
+                datos.setParametro("ID", ID);
+                datos.ejecutarLectura();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
         }
     }
 }
