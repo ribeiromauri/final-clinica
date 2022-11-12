@@ -47,6 +47,8 @@ namespace Clinica
                     emailMedico.Text = auxMedico.Email;
                     passMedico.Text = auxMedico.Contrasenia;
 
+                    //Agregar los chkEspecialidades del Medico que se quiere modificar
+
                 }
                 else if (!IsPostBack)
                 {
@@ -96,7 +98,7 @@ namespace Clinica
                     auxMedico.Especialidad = espSeleccionadas;
                     auxMedico.ID = int.Parse(Request.QueryString["id"]);
                     ctrlMedico.ModificarMedico(auxMedico);
-                    ctrlEspecialidades.AgregarEspecialidadPorMedico(auxMedico);
+                    ctrlEspecialidades.AgregarEspecialidadPorMedico(auxMedico, int.Parse(Request.QueryString["id"]));
                 } //Validar datos antes de cargar el registro
                 else if (ValidarDatos(auxMedico.Matricula, auxMedico.Email, auxMedico.DNI))
                 {

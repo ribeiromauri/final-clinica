@@ -10,9 +10,9 @@ namespace Controlador
 {
     public class ControladorMedicos
     {
-        AccesoDatos accesoDatos = new AccesoDatos();
         public List<Medicos> listar(string id = "")
         {
+            AccesoDatos accesoDatos = new AccesoDatos();
             List<Medicos> lista = new List<Medicos>();
             
             try
@@ -47,6 +47,7 @@ namespace Controlador
                     accesoEspecialidades.setConsulta("SELECT E.ID as IDE, E.NOMBRE as ESPECIALIDAD FROM ESPECIALIDADES E INNER JOIN ESPECIALIDAD_X_MEDICO ExM ON ExM.ID_ESPECIALIDAD = E.ID INNER JOIN MEDICOS M ON M.ID = ExM.ID_MEDICO WHERE M.ID = @ID");
                     accesoEspecialidades.setParametro("@ID", aux.ID);
                     accesoEspecialidades.ejecutarLectura();
+                    
                     aux.Especialidad = new List<Especialidades>();
 
                     while (accesoEspecialidades.Lector.Read())
@@ -55,11 +56,13 @@ namespace Controlador
                         especialidades.Nombre = (string)accesoEspecialidades.Lector["ESPECIALIDAD"];
                         aux.Especialidad.Add(especialidades);
                     }
+                    accesoEspecialidades.cerrarConexion();
 
                     AccesoDatos accesoHorarios = new AccesoDatos();
                     accesoHorarios.setParametro("@ID", aux.ID);
                     accesoHorarios.setConsulta("SELECT HT.DIA, HT.H_ENTRADA, HT.H_SALIDA, HT.LIBRE FROM HORARIOS_TRABAJO HT INNER JOIN MEDICOS M ON M.ID = HT.ID_MEDICO WHERE M.ID = @ID");
                     accesoHorarios.ejecutarLectura();
+                    
                     aux.HorariosTrabajo = new List<HorariosTrabajo>();
 
                     while (accesoHorarios.Lector.Read())
@@ -70,6 +73,7 @@ namespace Controlador
                         horariosTrabajo.Libre = (bool)accesoDatos.Lector["LIBRE"];
                         aux.HorariosTrabajo.Add(horariosTrabajo);
                     }
+                    accesoHorarios.cerrarConexion();
 
                     lista.Add(aux);
                 }
@@ -89,6 +93,7 @@ namespace Controlador
 
         public bool AgregarMedico(Medicos obj)
         {
+            AccesoDatos accesoDatos = new AccesoDatos();
             try
             {
                 accesoDatos.setProcedimiento("SP_ALTA_MEDICO");
@@ -125,6 +130,7 @@ namespace Controlador
                 datos.setParametro("@ID", nuevo.ID);
 
                 datos.ejecutarAccion();
+                datos.cerrarConexion();
             }
             catch (Exception ex)
             {

@@ -73,11 +73,30 @@ namespace Controlador
             }
         }
 
+        public bool AgregarEspecialidadPorMedico(Medicos aux, int ID)
+        {
+            try
+            {
+                foreach (Especialidades especialidad in aux.Especialidad)
+                {
+                    datos.setConsulta("INSERT INTO ESPECIALIDAD_X_MEDICO VALUES (@ID_MEDICO, @ID_ESPECIALIDAD)");
+                    datos.setParametro("@ID_MEDICO", ID);
+                    datos.setParametro("@ID_ESPECIALIDAD", especialidad.ID);
+                    datos.ejecutarAccion();
+                    datos.limpiarParametros();
+                    datos.cerrarConexion();
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+                throw ex;
+            }
+        }
+
         public void EliminarEspecialidadPorMedico(int ID)
         {
-            ControladorMedicos controlador = new ControladorMedicos();
-            ListaMedicos = controlador.listar();
-
             try
             {
                 datos.setProcedimiento("SP_ELIMINAR_ESPECIALIDADxMEDICO");
