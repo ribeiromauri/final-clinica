@@ -7,12 +7,12 @@
     <table class="table table-striped table-bordered">
         <thead class="table-dark">
             <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Nombre</th>
-                <th scope="col">Apellido</th>
-                <th scope="col">Número Matricula</th>
-                <th scope="col">Email</th>
-                <th scope="col">Accion</th>
+                <th scope="col" style="text-align: center">ID</th>
+                <th scope="col" style="text-align: center">Nombre</th>
+                <th scope="col" style="text-align: center">Apellido</th>
+                <th scope="col" style="text-align: center">Número Matricula</th>
+                <th scope="col" style="text-align: center">Email</th>
+                <th scope="col" style="text-align: center"></th>
             </tr>
         </thead>
         <tbody>
@@ -25,12 +25,12 @@
                         <td><%#Eval("Matricula") %></td>
                         <td><%#Eval("Email") %></td>
                         <td>
-                            <a href="PagAltaMedico.aspx?id=<%#Eval("ID") %>">Accion</a>
+                            <a href="PagAltaMedico.aspx?id=<%#Eval("ID") %>"><i class="fas fa-search-plus" style="color: black;"></i></a>
                         </td>
                     </tr>
                 </ItemTemplate>
             </asp:Repeater>
         </tbody>
     </table>
-    <a class="btn btn-primary" href="PagAltaMedico.aspx">Alta Medico</a>
+    <a class="btn btn-primary" href="PagAltaMedico.aspx">Agregar médico</a>
 </asp:Content>

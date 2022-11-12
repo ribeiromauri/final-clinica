@@ -7,12 +7,12 @@
     <table class="table table-striped table-bordered">
         <thead class="table-dark">
             <tr>
-                <th scope="col">ID</th>
-                <th scope="col">DNI</th>
-                <th scope="col">Nombre</th>
-                <th scope="col">Apellido</th>
-                <th scope="col">Email</th>
-                <th scope="col">Accion</th>
+                <th scope="col" style="text-align: center">ID</th>
+                <th scope="col" style="text-align: center">DNI</th>
+                <th scope="col" style="text-align: center">Nombre</th>
+                <th scope="col" style="text-align: center">Apellido</th>
+                <th scope="col" style="text-align: center">Email</th>
+                <th scope="col" style="text-align: center"></th>
             </tr>
         </thead>
         <tbody>
@@ -25,13 +25,13 @@
                         <td><%#Eval("Apellido") %></td>
                         <td><%#Eval("Email") %></td>
                         <td>
-                            <a href="PagAltaPaciente.aspx?id=<%#Eval("ID") %>">Accion</a>
+                            <a href="PagAltaPaciente.aspx?id=<%#Eval("ID") %>"><i class="fas fa-search-plus" style="color: black;"></i></a>
                         </td>
                     </tr>
                 </ItemTemplate>
             </asp:Repeater>
         </tbody>
     </table>
-    <a href="PagAltaPaciente.aspx" class="btn btn-primary">Agregar Paciente</a>
+    <a href="PagAltaPaciente.aspx" class="btn btn-primary">Agregar paciente</a>
 
 </asp:Content>
