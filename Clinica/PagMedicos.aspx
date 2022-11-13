@@ -3,7 +3,6 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <hr />
     <table class="table table-striped table-bordered">
         <thead class="table-dark">
             <tr>
@@ -19,11 +18,11 @@
             <asp:Repeater runat="server" ID="repRepetidor">
                 <ItemTemplate>
                     <tr>
-                        <th scope="row"><%#Eval("ID") %></th>
-                        <td><%#Eval("Nombre") %></td>
-                        <td><%#Eval("Apellido") %></td>
-                        <td><%#Eval("Matricula") %></td>
-                        <td><%#Eval("Email") %></td>
+                        <th scope="row" style="text-align: center"><%#Eval("ID") %></th>
+                        <td style="text-align: center"><%#Eval("Nombre") %></td>
+                        <td style="text-align: center"><%#Eval("Apellido") %></td>
+                        <td style="text-align: center"><%#Eval("Matricula") %></td>
+                        <td style="text-align: center"><%#Eval("Email") %></td>
                         <td>
                             <a href="PagAltaMedico.aspx?id=<%#Eval("ID") %>"><i class="fas fa-search-plus" style="color: black;"></i></a>
                         </td>

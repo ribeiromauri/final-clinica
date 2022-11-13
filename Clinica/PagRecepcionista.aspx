@@ -17,11 +17,11 @@
             <asp:Repeater runat="server" ID="repRepetidor">
                 <ItemTemplate>
                     <tr style="background-color: white">
-                        <th scope="row"><%#Eval("ID") %></th>
-                        <td><%#Eval("DNI") %></td>
-                        <td><%#Eval("Nombre") %></td>
-                        <td><%#Eval("Apellido") %></td>
-                        <td><%#Eval("Email") %></td>
+                        <th scope="row" style="text-align: center"><%#Eval("ID") %></th>
+                        <td style="text-align: center"><%#Eval("DNI") %></td>
+                        <td style="text-align: center"><%#Eval("Nombre") %></td>
+                        <td style="text-align: center"><%#Eval("Apellido") %></td>
+                        <td style="text-align: center"><%#Eval("Email") %></td>
                         <td>
                             <a href="PagAltaRecepcionista.aspx?id=<%#Eval("ID") %>"><i class="fas fa-search-plus" style="color: black;"></i></a>
                         </td>
