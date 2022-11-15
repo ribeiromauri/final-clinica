@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="AccesoDatos.cs" />
     <Compile Include="ControladorEspecialidades.cs" />
+    <Compile Include="ControladorHorariosTrabajo.cs" />
     <Compile Include="ControladorMedicos.cs" />
     <Compile Include="ControladorPacientes.cs" />
     <Compile Include="ControladorRecepcionista.cs" />

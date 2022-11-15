@@ -13,4 +13,5 @@ namespace Dominio
         public int HorarioSalida { get; set; }
         public bool Libre { get; set; }
     }
+
 }

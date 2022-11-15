@@ -32,22 +32,32 @@
             <asp:TextBox CssClass="form-control inputSize" ID="passMedico" runat="server" type="password" required="required"></asp:TextBox>
         </div>
         <h6>Seleccionar especialidad:</h6>
-        <asp:CheckBoxList ID="chkEspecialidades" runat="server" RepeatColumns="3"></asp:CheckBoxList>
-
+        <asp:CheckBoxList ID="chkEspecialidades" runat="server" RepeatColumns="4"></asp:CheckBoxList>
+        <hr />
+        <h6>Seleccionar día y horario de trabajo:</h6>
+        <asp:CheckBoxList ID="chkDiasTrabajo" runat="server" RepeatDirection="Horizontal"></asp:CheckBoxList>
+        <div class="mb-3">
+            <h6>Horario Entrada:</h6>
+            <asp:TextBox ID="txtHorarioEntrada" runat="server" TextMode="Number"></asp:TextBox>
+        </div>
+        <div class="mb-3">
+            <h6>Horario Salida:</h6>
+            <asp:TextBox ID="txtHorarioSalida" runat="server" TextMode="Number"></asp:TextBox>
+        </div>
     </div>
     <div class="mb-3">
         <asp:Button ID="Agregar" runat="server" Text="Agregar" CssClass="btn btn-success" OnClick="Agregar_Click" />
         <a href="PagMedicos.aspx" class="btn btn-warning">Volver</a>
         <%if (BotonEliminar)
             {%>
-        <asp:Button ID="btnEliminar" runat="server" Text="Eliminar" class="btn btn-danger" OnClick="btnEliminar_Click"/>
+        <asp:Button ID="btnEliminar" runat="server" Text="Eliminar" class="btn btn-danger" OnClick="btnEliminar_Click" />
         <%} %>
         <%if (ConfirmarEliminacion)
             {%>
         <hr />
         <div class="mb-3">
             <asp:CheckBox ID="chkConfirmarEliminacionMed" runat="server" Text="Confirmar" />
-            <asp:Button ID="btnConfirmarEliminacion" runat="server" Text="Eliminar" CssClass="btn btn-outline-danger" OnClick="btnConfirmarEliminacion_Click"/>
+            <asp:Button ID="btnConfirmarEliminacion" runat="server" Text="Eliminar" CssClass="btn btn-outline-danger" OnClick="btnConfirmarEliminacion_Click" />
         </div>
 
         <% } %>

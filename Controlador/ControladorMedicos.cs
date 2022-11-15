@@ -59,18 +59,18 @@ namespace Controlador
                     accesoEspecialidades.cerrarConexion();
 
                     AccesoDatos accesoHorarios = new AccesoDatos();
+                    accesoHorarios.setConsulta("SELECT HT.DIA as DIA, HT.H_ENTRADA as H_ENTRADA, HT.H_SALIDA as H_SALIDA, HT.LIBRE as LIBRE FROM HORARIOS_TRABAJO HT INNER JOIN MEDICOS M ON M.ID = HT.ID_MEDICO WHERE M.ID = @ID");
                     accesoHorarios.setParametro("@ID", aux.ID);
-                    accesoHorarios.setConsulta("SELECT HT.DIA, HT.H_ENTRADA, HT.H_SALIDA, HT.LIBRE FROM HORARIOS_TRABAJO HT INNER JOIN MEDICOS M ON M.ID = HT.ID_MEDICO WHERE M.ID = @ID");
                     accesoHorarios.ejecutarLectura();
                     
                     aux.HorariosTrabajo = new List<HorariosTrabajo>();
 
                     while (accesoHorarios.Lector.Read())
                     {
-                        horariosTrabajo.Dia = (string)accesoDatos.Lector["DIA"];
-                        horariosTrabajo.HorarioEntrada = (int)accesoDatos.Lector["H_ENTRADA"];
-                        horariosTrabajo.HorarioSalida = (int)accesoDatos.Lector["H_SALIDA"];
-                        horariosTrabajo.Libre = (bool)accesoDatos.Lector["LIBRE"];
+                        horariosTrabajo.Dia = (string)accesoHorarios.Lector["DIA"];
+                        horariosTrabajo.HorarioEntrada = (int)accesoHorarios.Lector["H_ENTRADA"];
+                        horariosTrabajo.HorarioSalida = (int)accesoHorarios.Lector["H_SALIDA"];
+                        horariosTrabajo.Libre = (bool)accesoHorarios.Lector["LIBRE"];
                         aux.HorariosTrabajo.Add(horariosTrabajo);
                     }
                     accesoHorarios.cerrarConexion();

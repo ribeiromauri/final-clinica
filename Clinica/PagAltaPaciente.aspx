@@ -8,27 +8,27 @@
     </div>
     <div class="mb-3">
         <label class="form-label">Nombre</label>
-        <asp:TextBox runat="server" ID="txtNombre" CssClass="form-control" placeholder="Ingresar Nombre" required = "required"/>
+        <asp:TextBox runat="server" ID="txtNombre" CssClass="form-control" placeholder="Ingresar Nombre" required="required" />
     </div>
     <div class="mb-3">
         <label class="form-label">Apellido</label>
-        <asp:TextBox runat="server" ID="txtApellido" CssClass="form-control" placeholder="Ingresar Apellido" required = "required"/>
+        <asp:TextBox runat="server" ID="txtApellido" CssClass="form-control" placeholder="Ingresar Apellido" required="required" />
     </div>
     <div class="mb-3">
         <label class="form-label">DNI</label>
-        <asp:TextBox runat="server" ID="txtDNI" CssClass="form-control" placeholder="Ingresar DNI" required = "required" textmode="Number" />
+        <asp:TextBox runat="server" ID="txtDNI" CssClass="form-control" placeholder="Ingresar DNI" required="required" TextMode="Number" />
     </div>
     <div class="mb-3">
         <label class="form-label">Domicilio</label>
-        <asp:TextBox runat="server" ID="txtDomicilio" CssClass="form-control" placeholder="Ingresar Domicilio" required = "required"/>
+        <asp:TextBox runat="server" ID="txtDomicilio" CssClass="form-control" placeholder="Ingresar Domicilio" required="required" />
     </div>
     <div class="mb-3">
         <label class="form-label">Email</label>
-        <asp:TextBox runat="server" ID="txtEmail" CssClass="form-control" placeholder="Ingresar Email" required = "required" type="email"/>
+        <asp:TextBox runat="server" ID="txtEmail" CssClass="form-control" placeholder="Ingresar Email" required="required" type="email" />
     </div>
     <div class="mb-3">
         <label class="form-label">Fecha Nacimiento</label>
-        <asp:TextBox runat="server" ID="txtFechaNacimiento" CssClass="form-control" placeholder="Ingresar Fecha Nacimiento" required = "required"/>
+        <asp:TextBox runat="server" ID="txtFechaNacimiento" CssClass="form-control" placeholder="Ingresar Fecha Nacimiento" required="required" />
     </div>
     <div class="row">
         <div class="mb-3">
@@ -48,4 +48,5 @@
 
             <% } %>
         </div>
+    </div>
 </asp:Content>
