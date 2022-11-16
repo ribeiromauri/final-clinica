@@ -8,10 +8,12 @@ namespace Dominio
 {
     public class HorariosTrabajo
     {
+        public int ID { get; set; }
         public string Dia { get; set; }
-        public int HorarioEntrada { get; set; }
-        public int HorarioSalida { get; set; }
-        public bool Libre { get; set; }
+        public override string ToString()
+        {
+            return Dia;
+        }
     }
 
 }

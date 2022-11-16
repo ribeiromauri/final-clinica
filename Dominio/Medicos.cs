@@ -15,5 +15,8 @@ namespace Dominio
         public string Email { get; set; }
         public List<Especialidades> Especialidad { get; set; }
         public List<HorariosTrabajo> HorariosTrabajo { get; set; }
+        public int HorarioEntrada { get; set; }
+        public int HorarioSalida { get; set; }
+        public bool Libre { get; set; }
     }
 }

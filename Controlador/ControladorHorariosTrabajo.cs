@@ -11,6 +11,40 @@ namespace Controlador
     public class ControladorHorariosTrabajo
     {
         public List<Medicos> ListaMedicos { get; set; }
+
+        public List<HorariosTrabajo> listar()
+        {
+            AccesoDatos datos = new AccesoDatos();
+            List<HorariosTrabajo> lista = new List<HorariosTrabajo>();
+
+            try
+            {
+                datos.setConsulta("SELECT ID, DIA FROM DIAS");
+                datos.ejecutarLectura();
+
+                while (datos.Lector.Read())
+                {
+                    HorariosTrabajo aux = new HorariosTrabajo();
+                    aux.ID = (int)datos.Lector["ID"];
+                    aux.Dia = (string)datos.Lector["DIA"];
+
+                    lista.Add(aux);
+                }
+
+                return lista;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+
+        }
+
         public void AgregarHorariosPorMedico(Medicos aux)
         {
             AccesoDatos datos = new AccesoDatos();
@@ -33,8 +67,8 @@ namespace Controlador
                     datos.setConsulta("INSERT INTO HORARIOS_TRABAJO VALUES (@DIA, @ID_MEDICO, @H_ENTRADA, @H_SALIDA, 0)");
                     datos.setParametro("@DIA", horarios.Dia);
                     datos.setParametro("@ID_MEDICO", id);
-                    datos.setParametro("@H_ENTRADA", horarios.HorarioEntrada);
-                    datos.setParametro("@H_SALIDA", horarios.HorarioSalida);
+                    datos.setParametro("@H_ENTRADA", aux.HorarioEntrada);
+                    datos.setParametro("@H_SALIDA", aux.HorarioSalida);
                     datos.ejecutarAccion();
                     datos.limpiarParametros();
                     datos.cerrarConexion();

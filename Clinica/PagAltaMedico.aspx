@@ -32,7 +32,7 @@
             <asp:TextBox CssClass="form-control inputSize" ID="passMedico" runat="server" type="password" required="required"></asp:TextBox>
         </div>
         <h6>Seleccionar especialidad:</h6>
-        <asp:CheckBoxList ID="chkEspecialidades" runat="server" RepeatColumns="4"></asp:CheckBoxList>
+        <asp:CheckBoxList ID="chkEspecialidades" runat="server" RepeatColumns="6"></asp:CheckBoxList>
         <hr />
         <h6>Seleccionar día y horario de trabajo:</h6>
         <asp:CheckBoxList ID="chkDiasTrabajo" runat="server" RepeatDirection="Horizontal"></asp:CheckBoxList>

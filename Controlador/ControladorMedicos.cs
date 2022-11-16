@@ -58,21 +58,24 @@ namespace Controlador
                     }
                     accesoEspecialidades.cerrarConexion();
 
-                    AccesoDatos accesoHorarios = new AccesoDatos();
-                    accesoHorarios.setConsulta("SELECT HT.DIA as DIA, HT.H_ENTRADA as H_ENTRADA, HT.H_SALIDA as H_SALIDA, HT.LIBRE as LIBRE FROM HORARIOS_TRABAJO HT INNER JOIN MEDICOS M ON M.ID = HT.ID_MEDICO WHERE M.ID = @ID");
-                    accesoHorarios.setParametro("@ID", aux.ID);
-                    accesoHorarios.ejecutarLectura();
+                    AccesoDatos accesoDias = new AccesoDatos();
+                    accesoDias.setConsulta("SELECT HT.DIA as DIA FROM HORARIOS_TRABAJO HT INNER JOIN MEDICOS M ON M.ID = HT.ID_MEDICO WHERE M.ID = @ID");
+                    accesoDias.setParametro("@ID", aux.ID);
+                    accesoDias.ejecutarLectura();
                     
                     aux.HorariosTrabajo = new List<HorariosTrabajo>();
 
-                    while (accesoHorarios.Lector.Read())
+                    while (accesoDias.Lector.Read())
                     {
-                        horariosTrabajo.Dia = (string)accesoHorarios.Lector["DIA"];
-                        horariosTrabajo.HorarioEntrada = (int)accesoHorarios.Lector["H_ENTRADA"];
-                        horariosTrabajo.HorarioSalida = (int)accesoHorarios.Lector["H_SALIDA"];
-                        horariosTrabajo.Libre = (bool)accesoHorarios.Lector["LIBRE"];
+                        horariosTrabajo.Dia = (string)accesoDias.Lector["DIA"];
                         aux.HorariosTrabajo.Add(horariosTrabajo);
                     }
+                    accesoDias.cerrarConexion();
+
+                    AccesoDatos accesoHorarios = new AccesoDatos();
+                    accesoHorarios.setConsulta("SELECT HT.H_ENTRADA AS H_ENTRADA, HT.H_SALIDA AS H_SALIDA, HT.LIBRE AS LIBRE FROM HORARIOS_TRABAJO HT INNER JOIN MEDICOS M ON M.ID = HT.ID_MEDICO WHERE M.ID = @ID");
+                    accesoHorarios.setParametro("@ID", aux.ID);
+                    accesoHorarios.ejecutarLectura();
                     accesoHorarios.cerrarConexion();
 
                     lista.Add(aux);

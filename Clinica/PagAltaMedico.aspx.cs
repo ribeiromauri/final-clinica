@@ -18,7 +18,7 @@ namespace Clinica
         private ControladorMedicos ctrlMedico = new ControladorMedicos();
         private ControladorHorariosTrabajo ctrlHorariosTrabajo = new ControladorHorariosTrabajo();
         private List<Especialidades> listaEspecialidades = new List<Especialidades>();
-        private List<string> dias = new List<string>();
+        private List<HorariosTrabajo> listaDias = new List<HorariosTrabajo>();
         private Medicos auxMedico = new Medicos();
         private HorariosTrabajo auxHorarios = new HorariosTrabajo();
 
@@ -26,13 +26,6 @@ namespace Clinica
         {
             ConfirmarEliminacion = false;
             BotonEliminar = false;
-
-            dias.Add("Lunes");
-            dias.Add("Martes");
-            dias.Add("Miércoles");
-            dias.Add("Jueves");
-            dias.Add("Viernes");
-            dias.Add("Sábado");
 
             try
             {
@@ -47,7 +40,8 @@ namespace Clinica
                     chkEspecialidades.DataBind();
                     Session.Add("Especialidades", listaEspecialidades);
 
-                    chkDiasTrabajo.DataSource = dias;
+                    listaDias = ctrlHorariosTrabajo.listar();
+                    chkDiasTrabajo.DataSource = listaDias;
                     chkDiasTrabajo.DataBind();
 
                     List<Medicos> lista = ctrlMedico.listar(Request.QueryString["id"].ToString());
@@ -70,8 +64,10 @@ namespace Clinica
                     chkEspecialidades.DataBind();
                     Session.Add("Especialidades", listaEspecialidades);
 
-                    chkDiasTrabajo.DataSource = dias;
+                    listaDias = ctrlHorariosTrabajo.listar();
+                    chkDiasTrabajo.DataSource = listaDias;
                     chkDiasTrabajo.DataBind();
+                    Session.Add("Dias", listaDias);
                 }
             }
             catch (Exception ex)
@@ -87,8 +83,9 @@ namespace Clinica
             try
             {
                 listaEspecialidades = (List<Especialidades>)Session["Especialidades"];
+                listaDias = (List<HorariosTrabajo>)Session["Dias"];
                 List<Especialidades> espSeleccionadas = new List<Especialidades>();
-                List<HorariosTrabajo> htSeleccionados = new List<HorariosTrabajo>();
+                List<HorariosTrabajo> diasSeleccionados = new List<HorariosTrabajo>();
 
                 auxMedico.Nombre = nombreMedico.Text;
                 auxMedico.Apellido = apellidoMedico.Text;
@@ -99,8 +96,8 @@ namespace Clinica
                 auxMedico.Tipo = TipoUsuario.MEDICO;
                 auxMedico.Contrasenia = passMedico.Text;
 
-                auxHorarios.HorarioEntrada = int.Parse(txtHorarioEntrada.Text);
-                auxHorarios.HorarioSalida = int.Parse(txtHorarioSalida.Text);
+                auxMedico.HorarioEntrada = int.Parse(txtHorarioEntrada.Text);
+                auxMedico.HorarioSalida = int.Parse(txtHorarioSalida.Text);
 
                 if (Request.QueryString["id"] != null)
                 {
@@ -114,13 +111,7 @@ namespace Clinica
                             espSeleccionadas.Add(listaEspecialidades.Find(x => x.Nombre == item.Value));
                         }
                     }
-                    foreach (ListItem item in chkDiasTrabajo.Items)
-                    {
-                        auxHorarios.Dia = item.Value;
-                        htSeleccionados.Add(auxHorarios);
-                    }
 
-                    auxMedico.HorariosTrabajo = htSeleccionados;
                     auxMedico.Especialidad = espSeleccionadas;
                     auxMedico.ID = int.Parse(Request.QueryString["id"]);
                     ctrlMedico.ModificarMedico(auxMedico);
@@ -139,12 +130,11 @@ namespace Clinica
                     {
                         if (item.Selected == true)
                         {
-                            auxHorarios.Dia = item.Value;
-                            htSeleccionados.Add(auxHorarios); //Se guarda el ultimo Dia en todo el List
+                            diasSeleccionados.Add(listaDias.Find(x => x.Dia == item.Value));
                         }
                     }
 
-                    auxMedico.HorariosTrabajo = htSeleccionados;
+                    auxMedico.HorariosTrabajo = diasSeleccionados;
                     auxMedico.Especialidad = espSeleccionadas;
                     if (ctrlMedico.AgregarMedico(auxMedico))
                     {
