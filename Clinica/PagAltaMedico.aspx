@@ -44,6 +44,38 @@
             <h6>Horario Salida:</h6>
             <asp:TextBox ID="txtHorarioSalida" runat="server" TextMode="Number"></asp:TextBox>
         </div>
+
+        <!--Otra opcion-->
+
+         <table class="table table-striped table-bordered">
+        <thead class="table-dark">
+            <tr>
+                <th scope="col" style="text-align: center">Dia</th>
+                <th scope="col" style="text-align: center">Hora entrada</th>
+                <th scope="col" style="text-align: center">Hora salida</th>
+                <th scope="col" style="text-align: center">Día libre</th>
+            </tr>
+        </thead>
+        <tbody>
+            <asp:Repeater runat="server" ID="repRepetidor">
+                <ItemTemplate>
+                    <tr>
+                        <th scope="row" style="text-align: center"></th>
+                        <td style="text-align: center">
+                            <asp:DropDownList ID="horaEntrada" runat="server"></asp:DropDownList>
+                        </td>
+                        <td style="text-align: center">
+                            <asp:DropDownList ID="horaSalida" runat="server"></asp:DropDownList>
+                        </td>
+                        <td style="text-align: center">
+                            <asp:CheckBox runat="server" ID="diaLibre" />
+                        </td>
+                                                
+                    </tr>
+                </ItemTemplate>
+            </asp:Repeater>
+        </tbody>
+    </table>
     </div>
     <div class="mb-3">
         <asp:Button ID="Agregar" runat="server" Text="Agregar" CssClass="btn btn-success" OnClick="Agregar_Click" />
