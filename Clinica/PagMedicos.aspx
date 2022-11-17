@@ -7,6 +7,7 @@
         <thead class="table-dark">
             <tr>
                 <th scope="col" style="text-align: center">ID</th>
+                <th scope="col" style="text-align: center">DNI</th>
                 <th scope="col" style="text-align: center">Nombre</th>
                 <th scope="col" style="text-align: center">Apellido</th>
                 <th scope="col" style="text-align: center">Número Matricula</th>
@@ -19,6 +20,7 @@
                 <ItemTemplate>
                     <tr>
                         <th scope="row" style="text-align: center"><%#Eval("ID") %></th>
+                        <th style="text-align: center"><%#Eval("DNI") %></th>
                         <td style="text-align: center"><%#Eval("Nombre") %></td>
                         <td style="text-align: center"><%#Eval("Apellido") %></td>
                         <td style="text-align: center"><%#Eval("Matricula") %></td>

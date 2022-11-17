@@ -20,7 +20,6 @@ namespace Clinica
         private List<Especialidades> listaEspecialidades = new List<Especialidades>();
         private List<HorariosTrabajo> listaDias = new List<HorariosTrabajo>();
         private Medicos auxMedico = new Medicos();
-        private HorariosTrabajo auxHorarios = new HorariosTrabajo();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -38,7 +37,6 @@ namespace Clinica
                     listaEspecialidades = ctrlEspecialidades.ListarEspecialidades();
                     chkEspecialidades.DataSource = listaEspecialidades;
                     chkEspecialidades.DataBind();
-                    Session.Add("Especialidades", listaEspecialidades);
 
                     listaDias = ctrlHorariosTrabajo.listar();
                     chkDiasTrabajo.DataSource = listaDias;
@@ -53,6 +51,8 @@ namespace Clinica
                     matriculaMedico.Text = auxMedico.Matricula.ToString();
                     emailMedico.Text = auxMedico.Email;
                     passMedico.Text = auxMedico.Contrasenia;
+                    txtHorarioEntrada.Text = auxMedico.HorarioEntrada.ToString();
+                    txtHorarioSalida.Text = auxMedico.HorarioSalida.ToString();
 
                     //Agregar los chkEspecialidades del Medico que se quiere modificar
 
@@ -103,6 +103,7 @@ namespace Clinica
                 {
                     //Elimino de la base de datos las especialidades x medicos asi a la hora de volver a cargarlas las "pisa"
                     ctrlEspecialidades.EliminarEspecialidadPorMedico(int.Parse(Request.QueryString["id"]));
+                    ctrlHorariosTrabajo.EliminarHorariosPorMedico(int.Parse(Request.QueryString["id"]));
 
                     foreach (ListItem item in chkEspecialidades.Items)
                     {
@@ -111,11 +112,22 @@ namespace Clinica
                             espSeleccionadas.Add(listaEspecialidades.Find(x => x.Nombre == item.Value));
                         }
                     }
+                    foreach (ListItem item in chkDiasTrabajo.Items)
+                    {
+                        if (item.Selected == true)
+                        {
+                            diasSeleccionados.Add(listaDias.Find(x => x.Dia == item.Value));
+                        }
+                    }
 
+                    auxMedico.HorariosTrabajo = diasSeleccionados;
                     auxMedico.Especialidad = espSeleccionadas;
+
                     auxMedico.ID = int.Parse(Request.QueryString["id"]);
+
                     ctrlMedico.ModificarMedico(auxMedico);
-                    ctrlEspecialidades.AgregarEspecialidadPorMedico(auxMedico, int.Parse(Request.QueryString["id"]));
+                    ctrlEspecialidades.AgregarEspecialidadPorMedico(auxMedico, auxMedico.ID);
+                    ctrlHorariosTrabajo.AgregarHorariosPorMedico(auxMedico, auxMedico.ID);
                 } //Validar datos antes de cargar el registro
                 else if (ValidarDatos(auxMedico.Matricula, auxMedico.Email, auxMedico.DNI))
                 {

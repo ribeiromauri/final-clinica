@@ -64,15 +64,57 @@ namespace Controlador
             {
                 foreach (HorariosTrabajo horarios in aux.HorariosTrabajo)
                 {
-                    datos.setConsulta("INSERT INTO HORARIOS_TRABAJO VALUES (@DIA, @ID_MEDICO, @H_ENTRADA, @H_SALIDA, 0)");
-                    datos.setParametro("@DIA", horarios.Dia);
+                    datos.setConsulta("INSERT INTO HORARIOS_TRABAJO VALUES (@ID_MEDICO, @DIA, @H_ENTRADA, @H_SALIDA, 0)");
                     datos.setParametro("@ID_MEDICO", id);
+                    datos.setParametro("@DIA", horarios.Dia);
                     datos.setParametro("@H_ENTRADA", aux.HorarioEntrada);
                     datos.setParametro("@H_SALIDA", aux.HorarioSalida);
                     datos.ejecutarAccion();
                     datos.limpiarParametros();
                     datos.cerrarConexion();
                 }
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
+        public void AgregarHorariosPorMedico(Medicos aux, int ID)
+        {
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                foreach (HorariosTrabajo horarios in aux.HorariosTrabajo)
+                {
+                    datos.setConsulta("INSERT INTO HORARIOS_TRABAJO VALUES (@ID_MEDICO, @DIA, @H_ENTRADA, @H_SALIDA, 0)");
+                    datos.setParametro("@ID_MEDICO", ID);
+                    datos.setParametro("@DIA", horarios.Dia);
+                    datos.setParametro("@H_ENTRADA", aux.HorarioEntrada);
+                    datos.setParametro("@H_SALIDA", aux.HorarioSalida);
+                    datos.ejecutarAccion();
+                    datos.limpiarParametros();
+                    datos.cerrarConexion();
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
+        public void EliminarHorariosPorMedico(int ID)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setProcedimiento("SP_ELIMINAR_HORARIOSxMEDICO");
+                datos.setParametro("@ID", ID);
+                datos.ejecutarAccion();
+                datos.cerrarConexion();
             }
             catch (Exception ex)
             {

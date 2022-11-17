@@ -10,10 +10,17 @@ namespace Controlador
 {
     public class ControladorMedicos
     {
+        private List<Especialidades> listaEspecialidades = new List<Especialidades>();
+        private List<HorariosTrabajo> listaDias = new List<HorariosTrabajo>();
+        private ControladorEspecialidades ctrlEspecialidades = new ControladorEspecialidades();
+        private ControladorHorariosTrabajo ctrlDias = new ControladorHorariosTrabajo();
         public List<Medicos> listar(string id = "")
         {
             AccesoDatos accesoDatos = new AccesoDatos();
             List<Medicos> lista = new List<Medicos>();
+
+            listaEspecialidades = ctrlEspecialidades.ListarEspecialidades();
+            listaDias = ctrlDias.listar();
             
             try
             {
@@ -54,7 +61,13 @@ namespace Controlador
                     {
                         especialidades.ID = (int)accesoEspecialidades.Lector["IDE"];
                         especialidades.Nombre = (string)accesoEspecialidades.Lector["ESPECIALIDAD"];
-                        aux.Especialidad.Add(especialidades);
+                        foreach (Especialidades item in listaEspecialidades)
+                        {
+                            if(especialidades.Nombre == item.Nombre)
+                            {
+                                aux.Especialidad.Add(listaEspecialidades.Find(x => x.Nombre == item.Nombre));
+                            }
+                        }
                     }
                     accesoEspecialidades.cerrarConexion();
 
@@ -68,15 +81,27 @@ namespace Controlador
                     while (accesoDias.Lector.Read())
                     {
                         horariosTrabajo.Dia = (string)accesoDias.Lector["DIA"];
-                        aux.HorariosTrabajo.Add(horariosTrabajo);
+                        foreach (HorariosTrabajo item in listaDias)
+                        {
+                            if(horariosTrabajo.Dia == item.Dia)
+                            {
+                                aux.HorariosTrabajo.Add(listaDias.Find(x => x.Dia == item.Dia));
+                            }
+                        }
                     }
                     accesoDias.cerrarConexion();
 
-                    AccesoDatos accesoHorarios = new AccesoDatos();
-                    accesoHorarios.setConsulta("SELECT HT.H_ENTRADA AS H_ENTRADA, HT.H_SALIDA AS H_SALIDA, HT.LIBRE AS LIBRE FROM HORARIOS_TRABAJO HT INNER JOIN MEDICOS M ON M.ID = HT.ID_MEDICO WHERE M.ID = @ID");
-                    accesoHorarios.setParametro("@ID", aux.ID);
-                    accesoHorarios.ejecutarLectura();
-                    accesoHorarios.cerrarConexion();
+                    //AccesoDatos accesoHorarios = new AccesoDatos();
+                    //accesoHorarios.setConsulta("SELECT HT.H_ENTRADA AS H_ENTRADA, HT.H_SALIDA AS H_SALIDA, HT.LIBRE AS LIBRE FROM HORARIOS_TRABAJO HT INNER JOIN MEDICOS M ON M.ID = HT.ID_MEDICO WHERE M.ID = @ID");
+                    //accesoHorarios.setParametro("@ID", aux.ID);
+                    //accesoHorarios.ejecutarLectura();
+
+                    //while (accesoHorarios.Lector.Read())
+                    //{
+                    //    aux.HorarioEntrada = (int)accesoHorarios.Lector["H_ENTRADA"];
+                    //    aux.HorarioSalida = (int)accesoHorarios.Lector["H_SALIDA"];
+                    //}
+                    //accesoHorarios.cerrarConexion();
 
                     lista.Add(aux);
                 }
