@@ -71,10 +71,12 @@
     <Content Include="PagAltaPaciente.aspx" />
     <Content Include="PagAltaMedico.aspx" />
     <Content Include="PagAltaRecepcionista.aspx" />
+    <Content Include="PagAltaTurno.aspx" />
     <Content Include="PagMedicos.aspx" />
     <Content Include="PagPacientes.aspx" />
     <Content Include="PagPrincipal.aspx" />
     <Content Include="PagRecepcionista.aspx" />
+    <Content Include="PagTurnos.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -109,6 +111,13 @@
     <Compile Include="PagAltaRecepcionista.aspx.designer.cs">
       <DependentUpon>PagAltaRecepcionista.aspx</DependentUpon>
     </Compile>
+    <Compile Include="PagAltaTurno.aspx.cs">
+      <DependentUpon>PagAltaTurno.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PagAltaTurno.aspx.designer.cs">
+      <DependentUpon>PagAltaTurno.aspx</DependentUpon>
+    </Compile>
     <Compile Include="PagMedicos.aspx.cs">
       <DependentUpon>PagMedicos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -136,6 +145,13 @@
     </Compile>
     <Compile Include="PagRecepcionista.aspx.designer.cs">
       <DependentUpon>PagRecepcionista.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PagTurnos.aspx.cs">
+      <DependentUpon>PagTurnos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PagTurnos.aspx.designer.cs">
+      <DependentUpon>PagTurnos.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

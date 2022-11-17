@@ -32,10 +32,10 @@
                             <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Turnos</span> </a>
                         <ul class="collapse show nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
                             <li class="w-100">
-                                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline" style="padding-left: 3rem; color:white;">Listar turnos</span></a>
+                                <a href="PagTurnos.aspx" class="nav-link px-0"> <span class="d-none d-sm-inline" style="padding-left: 3rem; color:white;">Listar turnos</span></a>
                             </li>
                             <li>
-                                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline" style="padding-left: 3rem; color:white;">Asignar turno</span> </a>
+                                <a href="PagAltaTurno.aspx" class="nav-link px-0"> <span class="d-none d-sm-inline" style="padding-left: 3rem; color:white;">Asignar turno</span> </a>
                             </li>
                         </ul>
                     </li>
