@@ -82,8 +82,8 @@ namespace Clinica
             //Agrega el médico pero no las especialidades x médico 
             try
             {
-                listaEspecialidades = (List<Especialidades>)Session["Especialidades"];
-                listaDias = (List<HorariosTrabajo>)Session["Dias"];
+                listaEspecialidades = ctrlEspecialidades.ListarEspecialidades();
+                listaDias = ctrlHorariosTrabajo.listar();
                 List<Especialidades> espSeleccionadas = new List<Especialidades>();
                 List<HorariosTrabajo> diasSeleccionados = new List<HorariosTrabajo>();
 

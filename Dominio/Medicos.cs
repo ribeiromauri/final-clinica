@@ -18,5 +18,10 @@ namespace Dominio
         public int HorarioEntrada { get; set; }
         public int HorarioSalida { get; set; }
         public bool Libre { get; set; }
+
+        public override string ToString()
+        {
+            return Nombre;
+        }
     }
 }

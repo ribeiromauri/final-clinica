@@ -14,7 +14,7 @@
         <div class="mb-3">
             <label class="form-label">Especialidad</label>
             <div>
-                <asp:DropDownList ID="ddlEspecialidades" runat="server"></asp:DropDownList>
+                <asp:DropDownList ID="ddlEspecialidades" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlEspecialidades_SelectedIndexChanged"></asp:DropDownList>
             </div>
         </div>
         <div class="mb-3">
