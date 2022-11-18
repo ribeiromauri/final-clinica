@@ -20,7 +20,7 @@
         <div class="mb-3">
             <label class="form-label">Médico</label>
             <div>
-                <asp:DropDownList ID="ddlMedicos" runat="server"></asp:DropDownList>
+                <asp:DropDownList ID="ddlMedicos" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlMedicos_SelectedIndexChanged"></asp:DropDownList>
             </div>
         </div>
         <div class="mb-3">

@@ -39,7 +39,17 @@ namespace Clinica
             int id = int.Parse(ddlEspecialidades.SelectedItem.Value);
 
             ddlMedicos.DataSource = ctrlMedicos.ListarPorEspecialidad(id);
+            ddlMedicos.DataTextField = "Apellido";
+            ddlMedicos.DataValueField = "ID";
             ddlMedicos.DataBind();
+        }
+
+        protected void ddlMedicos_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int id = int.Parse(ddlMedicos.SelectedItem.Value);
+
+            ddlDias.DataSource = ctrlMedicos.ListarDias(id);
+            ddlDias.DataBind();
         }
     }
 }

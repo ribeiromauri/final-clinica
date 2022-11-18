@@ -37,10 +37,12 @@ namespace Clinica
                     listaEspecialidades = ctrlEspecialidades.ListarEspecialidades();
                     chkEspecialidades.DataSource = listaEspecialidades;
                     chkEspecialidades.DataBind();
+                    Session.Add("Especialidades", listaEspecialidades);
 
                     listaDias = ctrlHorariosTrabajo.listar();
                     chkDiasTrabajo.DataSource = listaDias;
                     chkDiasTrabajo.DataBind();
+                    Session.Add("Dias", listaDias);
 
                     List<Medicos> lista = ctrlMedico.listar(Request.QueryString["id"].ToString());
                     auxMedico = lista[0];
@@ -82,8 +84,8 @@ namespace Clinica
             //Agrega el médico pero no las especialidades x médico 
             try
             {
-                listaEspecialidades = ctrlEspecialidades.ListarEspecialidades();
-                listaDias = ctrlHorariosTrabajo.listar();
+                listaEspecialidades = (List<Especialidades>)Session["Especialidades"];
+                listaDias = (List<HorariosTrabajo>)Session["Dias"];
                 List<Especialidades> espSeleccionadas = new List<Especialidades>();
                 List<HorariosTrabajo> diasSeleccionados = new List<HorariosTrabajo>();
 

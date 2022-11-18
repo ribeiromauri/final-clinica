@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.AccessControl;
 using System.Text;
 using System.Threading.Tasks;
 using Controlador;
@@ -216,6 +217,41 @@ namespace Controlador
                 accesoDatos.cerrarConexion();
             }
         }
+
+        public List<HorariosTrabajo> ListarDias(int ID)
+        {
+            AccesoDatos accesoDatos = new AccesoDatos();
+            List<HorariosTrabajo> lista = new List<HorariosTrabajo>();
+            listaDias = ctrlDias.listar();
+
+            try
+            {
+                accesoDatos.setConsulta("SELECT D.ID AS ID, HT.DIA AS DIA FROM HORARIOS_TRABAJO HT INNER JOIN DIAS D ON D.DIA = HT.DIA WHERE ID_MEDICO = @ID");
+                accesoDatos.setParametro("@ID", ID);
+                accesoDatos.ejecutarLectura();
+
+                while (accesoDatos.Lector.Read())
+                {
+                    HorariosTrabajo aux = new HorariosTrabajo();
+
+                    aux.ID = (int)accesoDatos.Lector["ID"];
+                    aux.Dia = (string)accesoDatos.Lector["DIA"];
+
+                    lista.Add(aux);
+                }
+
+                return lista;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                accesoDatos.cerrarConexion();
+            }
+        } 
 
         public bool AgregarMedico(Medicos obj)
         {
