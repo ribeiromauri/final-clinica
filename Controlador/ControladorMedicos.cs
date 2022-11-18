@@ -92,17 +92,17 @@ namespace Controlador
                     }
                     accesoDias.cerrarConexion();
 
-                    //AccesoDatos accesoHorarios = new AccesoDatos();
-                    //accesoHorarios.setConsulta("SELECT HT.H_ENTRADA AS H_ENTRADA, HT.H_SALIDA AS H_SALIDA, HT.LIBRE AS LIBRE FROM HORARIOS_TRABAJO HT INNER JOIN MEDICOS M ON M.ID = HT.ID_MEDICO WHERE M.ID = @ID");
-                    //accesoHorarios.setParametro("@ID", aux.ID);
-                    //accesoHorarios.ejecutarLectura();
+                    AccesoDatos accesoHorarios = new AccesoDatos();
+                    accesoHorarios.setConsulta("SELECT HT.H_ENTRADA AS H_ENTRADA, HT.H_SALIDA AS H_SALIDA, HT.LIBRE AS LIBRE FROM HORARIOS_TRABAJO HT INNER JOIN MEDICOS M ON M.ID = HT.ID_MEDICO WHERE M.ID = @ID");
+                    accesoHorarios.setParametro("@ID", aux.ID);
+                    accesoHorarios.ejecutarLectura();
 
-                    //while (accesoHorarios.Lector.Read())
-                    //{
-                    //    aux.HorarioEntrada = (int)accesoHorarios.Lector["H_ENTRADA"];
-                    //    aux.HorarioSalida = (int)accesoHorarios.Lector["H_SALIDA"];
-                    //}
-                    //accesoHorarios.cerrarConexion();
+                    while (accesoHorarios.Lector.Read())
+                    {
+                        aux.HorarioEntrada = (int)accesoHorarios.Lector["H_ENTRADA"];
+                        aux.HorarioSalida = (int)accesoHorarios.Lector["H_SALIDA"];
+                    }
+                    accesoHorarios.cerrarConexion();
 
                     lista.Add(aux);
                 }
@@ -190,17 +190,17 @@ namespace Controlador
                     }
                     accesoDias.cerrarConexion();
 
-                    //AccesoDatos accesoHorarios = new AccesoDatos();
-                    //accesoHorarios.setConsulta("SELECT HT.H_ENTRADA AS H_ENTRADA, HT.H_SALIDA AS H_SALIDA, HT.LIBRE AS LIBRE FROM HORARIOS_TRABAJO HT INNER JOIN MEDICOS M ON M.ID = HT.ID_MEDICO WHERE M.ID = @ID");
-                    //accesoHorarios.setParametro("@ID", aux.ID);
-                    //accesoHorarios.ejecutarLectura();
+                    AccesoDatos accesoHorarios = new AccesoDatos();
+                    accesoHorarios.setConsulta("SELECT HT.H_ENTRADA AS H_ENTRADA, HT.H_SALIDA AS H_SALIDA, HT.LIBRE AS LIBRE FROM HORARIOS_TRABAJO HT INNER JOIN MEDICOS M ON M.ID = HT.ID_MEDICO WHERE M.ID = @ID");
+                    accesoHorarios.setParametro("@ID", aux.ID);
+                    accesoHorarios.ejecutarLectura();
 
-                    //while (accesoHorarios.Lector.Read())
-                    //{
-                    //    aux.HorarioEntrada = (int)accesoHorarios.Lector["H_ENTRADA"];
-                    //    aux.HorarioSalida = (int)accesoHorarios.Lector["H_SALIDA"];
-                    //}
-                    //accesoHorarios.cerrarConexion();
+                    while (accesoHorarios.Lector.Read())
+                    {
+                        aux.HorarioEntrada = (int)accesoHorarios.Lector["H_ENTRADA"];
+                        aux.HorarioSalida = (int)accesoHorarios.Lector["H_SALIDA"];
+                    }
+                    accesoHorarios.cerrarConexion();
 
                     lista.Add(aux);
                 }
