@@ -50,6 +50,9 @@ namespace Clinica
 
             ddlDias.DataSource = ctrlMedicos.ListarDias(id);
             ddlDias.DataBind();
+
+            ddlHorarios.DataSource = ctrlMedicos.ListarHorarios(id);
+            ddlHorarios.DataBind();
         }
     }
 }

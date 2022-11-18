@@ -253,6 +253,39 @@ namespace Controlador
             }
         } 
 
+        public List<int> ListarHorarios(int ID)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            List<int> lista = new List<int>();
+            int horarioEntrada;
+            int horarioSalida;
+
+            try
+            {
+                datos.setConsulta("SELECT DISTINCT H_ENTRADA, H_SALIDA FROM HORARIOS_TRABAJO HT WHERE ID_MEDICO = @ID");
+                datos.setParametro("@ID", ID);
+                datos.ejecutarLectura();
+
+                while (datos.Lector.Read())
+                {
+                    horarioEntrada = (int)datos.Lector["H_ENTRADA"];
+                    horarioSalida = (int)datos.Lector["H_SALIDA"];
+
+                    for (int i = horarioEntrada; i < horarioSalida; i++)
+                    {
+                        lista.Add(i);
+                    }
+                }
+
+                return lista;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
         public bool AgregarMedico(Medicos obj)
         {
             AccesoDatos accesoDatos = new AccesoDatos();
