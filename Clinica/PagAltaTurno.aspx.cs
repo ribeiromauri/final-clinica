@@ -20,9 +20,10 @@ namespace Clinica
         protected void Page_Load(object sender, EventArgs e)
         {
             ControladorMedicos controladorMedicos = new ControladorMedicos();
-
+            
             if (!IsPostBack)
-            {
+            {            
+
                 listaMedicos = ctrlMedicos.listar();
                 Session["listaMedicos"] = listaMedicos;
 
@@ -65,8 +66,20 @@ namespace Clinica
                 List<Pacientes> listaFiltrada = listaPacientes.FindAll(x => x.DNI.Contains(DNI.Text));
                 if(listaFiltrada.Count == 0)
                 {
+                    txtValidar.Visible = true;
                     txtValidar.Text = "No existen registros para el DNI " + DNI.Text;
+                    txtAlta.Visible = true;
                     txtAlta.Text = "Registrar paciente";
+                }
+                else
+                {
+                    //Sin funcionalidad aun 
+                    paciente.DataSource = listaFiltrada;
+                    paciente.DataBind();
+                    paciente.Visible = true;
+                    //Se puede crear un metodo onlick con el boton y que quede seleccionado el paciente para registrar
+                    seleccionar.Visible = true;
+                    cancelar.Visible = true;
                 }
             }
             catch (Exception ex)
@@ -74,6 +87,11 @@ namespace Clinica
 
                 throw ex;
             }
+        }
+
+        protected void cancelar_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("PagAltaTurno.aspx", false);
         }
     }
 }

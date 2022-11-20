@@ -16,5 +16,10 @@ namespace Dominio
         public string Email { get; set; }
         public DateTime FechaNacimiento { get; set; }
         public bool Estado { get; set; }
+
+        public override string ToString()
+        {
+            return Nombre + " " + Apellido;
+        }
     }
 }

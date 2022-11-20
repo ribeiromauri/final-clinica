@@ -8,19 +8,27 @@
             background-color: #fff;
             border-color: #fff;
         }
+        .validaciones{
+            display: inline-flex;
+        }
     </style>
     <div style="font-family: Georgia (serif); font-size: xx-large; text-align: center; font-weight: 600" class="mb-3">
         <p>TURNOS MÉDICOS</p>
     </div>
     <div style="display: flex; flex-direction: column; justify-content: center;" class="mb-3">
-        <div style="display: inline-flex; padding-bottom: 20px;">
+        <div style="display: inline-flex;">
             <label class="form-label">DNI Paciente</label>
             <asp:TextBox CssClass="form-control inputSize" ID="DNI" runat="server" required="required" TextMode="Number"></asp:TextBox>
             <asp:Button cssClass="btn boton" ID="buscarPacinte" runat="server" Text="🔎" OnClick="buscarPaciente_Click"/>
         </div>
         <div class="mb-3">
-            <h5 style="padding-top: 5px; text-align: center;"><asp:Label ID="txtValidar" CssClass="h5" runat="server" /></h5>
-            <a href="PagAltaPaciente.aspx"><h5 style="padding-top:5px; text-align: center;"><asp:Label ID="txtAlta" runat="server" /></h5></a>
+            <h5 style="text-align: center;"><asp:Label ID="txtValidar" CssClass="h5" runat="server" visible="false"/></h5>
+            <a href="PagAltaPaciente.aspx"><h5 style=" text-align: center;"><asp:Label ID="txtAlta" runat="server" visible="false"/></h5></a>            
+        </div>
+        <div class="validaciones">
+            <asp:RadioButtonList runat="server" ID="paciente" Visible="false"></asp:RadioButtonList>
+            <asp:Button runat="server" ID="seleccionar" Visible="false" Text="✔" CssClass="btn boton"/>
+            <asp:Button runat="server" id="cancelar" Visible="false" Text="✖" CssClass="btn boton" OnClick="cancelar_Click"/>
         </div>
         <div class="mb-3">
             <label class="form-label">Especialidad</label>

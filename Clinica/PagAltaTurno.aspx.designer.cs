@@ -51,6 +51,33 @@ namespace Clinica
         protected global::System.Web.UI.WebControls.Label txtAlta;
 
         /// <summary>
+        /// Control paciente.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButtonList paciente;
+
+        /// <summary>
+        /// Control seleccionar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button seleccionar;
+
+        /// <summary>
+        /// Control cancelar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button cancelar;
+
+        /// <summary>
         /// Control ddlEspecialidades.
         /// </summary>
         /// <remarks>
