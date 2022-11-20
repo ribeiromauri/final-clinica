@@ -66,13 +66,21 @@ namespace Clinica
                 List<Pacientes> listaFiltrada = listaPacientes.FindAll(x => x.DNI.Contains(DNI.Text));
                 if(listaFiltrada.Count == 0)
                 {
+                    paciente.Visible = false;
+                    seleccionar.Visible = false;
+                    cancelar.Visible = false;
+
                     txtValidar.Visible = true;
                     txtValidar.Text = "No existen registros para el DNI " + DNI.Text;
                     txtAlta.Visible = true;
                     txtAlta.Text = "Registrar paciente";
+
                 }
                 else
                 {
+                    txtValidar.Visible = false;
+                    txtAlta.Visible = false;
+
                     //Sin funcionalidad aun 
                     paciente.DataSource = listaFiltrada;
                     paciente.DataBind();

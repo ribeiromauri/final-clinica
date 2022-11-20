@@ -33,7 +33,7 @@ namespace Clinica
                 txtDNI.Text = seleccionado.DNI;
                 txtDomicilio.Text = seleccionado.Domicilio;
                 txtEmail.Text = seleccionado.Email;
-                txtFechaNacimiento.Text = seleccionado.FechaNacimiento.ToString();
+                txtFechaNacimiento.Text = seleccionado.FechaNacimiento.ToString("d");
             }
         }
 

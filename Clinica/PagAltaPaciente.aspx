@@ -28,7 +28,7 @@
     </div>
     <div class="mb-3">
         <label class="form-label">Fecha Nacimiento</label>
-        <asp:TextBox runat="server" ID="txtFechaNacimiento" CssClass="form-control" placeholder="Ingresar Fecha Nacimiento" required="required" />
+        <asp:TextBox runat="server" ID="txtFechaNacimiento" CssClass="form-control" placeholder="Ingresar Fecha Nacimiento" required="required"/>
     </div>
     <div class="row">
         <div class="mb-3">
