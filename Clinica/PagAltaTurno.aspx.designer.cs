@@ -24,6 +24,33 @@ namespace Clinica
         protected global::System.Web.UI.WebControls.TextBox DNI;
 
         /// <summary>
+        /// Control buscarPacinte.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button buscarPacinte;
+
+        /// <summary>
+        /// Control txtValidar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label txtValidar;
+
+        /// <summary>
+        /// Control txtAlta.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label txtAlta;
+
+        /// <summary>
         /// Control ddlEspecialidades.
         /// </summary>
         /// <remarks>

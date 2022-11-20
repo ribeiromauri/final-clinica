@@ -16,6 +16,7 @@ namespace Clinica
 
         public ControladorEspecialidades ctrlEsp = new ControladorEspecialidades();
         public ControladorMedicos ctrlMedicos = new ControladorMedicos();
+        public ControladorPacientes ctrlPacientes = new ControladorPacientes();
         protected void Page_Load(object sender, EventArgs e)
         {
             ControladorMedicos controladorMedicos = new ControladorMedicos();
@@ -31,6 +32,7 @@ namespace Clinica
                 ddlEspecialidades.DataTextField = "Nombre";
                 ddlEspecialidades.DataValueField = "ID";
                 ddlEspecialidades.DataBind();
+                
             }
         }
 
@@ -53,6 +55,25 @@ namespace Clinica
 
             ddlHorarios.DataSource = ctrlMedicos.ListarHorarios(id);
             ddlHorarios.DataBind();
+        }
+
+        protected void buscarPaciente_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                List<Pacientes> listaPacientes = ctrlPacientes.listar();
+                List<Pacientes> listaFiltrada = listaPacientes.FindAll(x => x.DNI.Contains(DNI.Text));
+                if(listaFiltrada.Count == 0)
+                {
+                    txtValidar.Text = "No existen registros para el DNI " + DNI.Text;
+                    txtAlta.Text = "Registrar paciente";
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
         }
     }
 }
