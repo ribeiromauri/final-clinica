@@ -20,9 +20,9 @@ namespace Clinica
         protected void Page_Load(object sender, EventArgs e)
         {
             ControladorMedicos controladorMedicos = new ControladorMedicos();
-            
+
             if (!IsPostBack)
-            {            
+            {
 
                 listaMedicos = ctrlMedicos.listar();
                 Session["listaMedicos"] = listaMedicos;
@@ -33,7 +33,7 @@ namespace Clinica
                 ddlEspecialidades.DataTextField = "Nombre";
                 ddlEspecialidades.DataValueField = "ID";
                 ddlEspecialidades.DataBind();
-                
+
             }
         }
 
@@ -45,6 +45,12 @@ namespace Clinica
             ddlMedicos.DataTextField = "Apellido";
             ddlMedicos.DataValueField = "ID";
             ddlMedicos.DataBind();
+
+            //Revisar
+            if (ddlMedicos.Items.Count == 1)
+            {
+                ddlMedicos_SelectedIndexChanged(sender, e);
+            }
         }
 
         protected void ddlMedicos_SelectedIndexChanged(object sender, EventArgs e)
@@ -64,7 +70,7 @@ namespace Clinica
             {
                 List<Pacientes> listaPacientes = ctrlPacientes.listar();
                 List<Pacientes> listaFiltrada = listaPacientes.FindAll(x => x.DNI.Contains(DNI.Text));
-                if(listaFiltrada.Count == 0)
+                if (listaFiltrada.Count == 0)
                 {
                     paciente.Visible = false;
                     seleccionar.Visible = false;
@@ -99,7 +105,7 @@ namespace Clinica
 
         protected void cancelar_Click(object sender, EventArgs e)
         {
-            Response.Redirect("PagAltaTurno.aspx", false);
+            Response.Redirect("PagTurnos.aspx", false);
         }
     }
 }
