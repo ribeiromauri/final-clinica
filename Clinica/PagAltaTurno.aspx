@@ -4,11 +4,12 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <style>
-        .boton{
+        .boton {
             background-color: #fff;
             border-color: #fff;
         }
-        .validaciones{
+
+        .validaciones {
             display: inline-flex;
         }
     </style>
@@ -19,16 +20,20 @@
         <div style="display: inline-flex;">
             <label class="form-label">DNI Paciente</label>
             <asp:TextBox CssClass="form-control inputSize" ID="DNI" runat="server" required="required" TextMode="Number"></asp:TextBox>
-            <asp:Button cssClass="btn boton" ID="buscarPacinte" runat="server" Text="🔎" OnClick="buscarPaciente_Click"/>
+            <asp:Button CssClass="btn boton" ID="buscarPacinte" runat="server" Text="🔎" OnClick="buscarPaciente_Click" />
         </div>
         <div class="mb-3">
-            <h5 style="text-align: center;"><asp:Label ID="txtValidar" CssClass="h5" runat="server" visible="false"/></h5>
-            <a href="PagAltaPaciente.aspx"><h5 style=" text-align: center;"><asp:Label ID="txtAlta" runat="server" visible="false"/></h5></a>            
+            <h5 style="text-align: center;">
+                <asp:Label ID="txtValidar" CssClass="h5" runat="server" Visible="false" /></h5>
+            <a href="PagAltaPaciente.aspx">
+                <h5 style="text-align: center;">
+                    <asp:Label ID="txtAlta" runat="server" Visible="false" /></h5>
+            </a>
         </div>
         <div class="validaciones">
             <asp:RadioButtonList runat="server" ID="paciente" Visible="false"></asp:RadioButtonList>
-            <asp:Button runat="server" ID="seleccionar" Visible="false" Text="✔" CssClass="btn boton"/>
-            <asp:Button runat="server" id="cancelar" Visible="false" Text="✖" CssClass="btn boton" OnClick="cancelar_Click"/>
+            <asp:Button runat="server" ID="seleccionar" Visible="false" Text="✔" CssClass="btn boton" />
+            <asp:Button runat="server" ID="cancelar" Visible="false" Text="✖" CssClass="btn boton" OnClick="cancelar_Click" />
         </div>
         <div class="mb-3">
             <label class="form-label">Especialidad</label>
@@ -43,9 +48,16 @@
             </div>
         </div>
         <div class="mb-3">
+            <asp:Calendar ID="calDias" runat="server" OnSelectionChanged="calDias_SelectionChanged"></asp:Calendar>
+            <asp:Label ID="lblValidarDia" runat="server" Text=" "></asp:Label>
+        </div>
+        <div class="mb-3">
+            <asp:Label ID="lblTest" runat="server" Text=" "></asp:Label>
+        </div>
+        <div class="mb-3">
             <label class="form-label">Día</label>
             <div>
-                <asp:DropDownList ID="ddlDias" runat="server"></asp:DropDownList>                
+                <asp:DropDownList ID="ddlDias" runat="server"></asp:DropDownList>
             </div>
         </div>
         <div class="mb-3">
@@ -58,7 +70,7 @@
             <label class="form-label">Observaciones</label>
             <asp:TextBox CssClass="form-control inputSize" ID="TextBox5" runat="server"></asp:TextBox>
         </div>
-        <div class="mb-3" style="margin-top:30px">
+        <div class="mb-3" style="margin-top: 30px">
             <asp:Button ID="btnAceptar" runat="server" Text="Agregar Turno" CssClass="btn btn-success" />
             <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" CssClass="btn btn-danger" />
         </div>

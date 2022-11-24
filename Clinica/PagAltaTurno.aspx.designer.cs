@@ -96,6 +96,33 @@ namespace Clinica
         protected global::System.Web.UI.WebControls.DropDownList ddlMedicos;
 
         /// <summary>
+        /// Control calDias.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Calendar calDias;
+
+        /// <summary>
+        /// Control lblValidarDia.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblValidarDia;
+
+        /// <summary>
+        /// Control lblTest.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblTest;
+
+        /// <summary>
         /// Control ddlDias.
         /// </summary>
         /// <remarks>

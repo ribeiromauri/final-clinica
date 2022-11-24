@@ -34,6 +34,7 @@ namespace Clinica
                 ddlEspecialidades.DataValueField = "ID";
                 ddlEspecialidades.DataBind();
 
+
             }
         }
 
@@ -50,6 +51,11 @@ namespace Clinica
             if (ddlMedicos.Items.Count == 1)
             {
                 ddlMedicos_SelectedIndexChanged(sender, e);
+            }
+            if(ddlMedicos.Items.Count == 0)
+            {
+                ddlDias.Items.Clear();
+                ddlHorarios.Items.Clear();
             }
         }
 
@@ -106,6 +112,19 @@ namespace Clinica
         protected void cancelar_Click(object sender, EventArgs e)
         {
             Response.Redirect("PagTurnos.aspx", false);
+        }
+
+        protected void calDias_SelectionChanged(object sender, EventArgs e)
+        {
+            if(calDias.SelectedDate < calDias.TodaysDate)
+            {
+                lblValidarDia.Text = "La fecha ya pasó. Seleccione otra";
+            }
+            else
+            {
+                lblTest.Text = calDias.SelectedDate.DayOfWeek.ToString();
+                lblValidarDia.Text = " ";
+            }
         }
     }
 }
