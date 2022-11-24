@@ -34,9 +34,9 @@ namespace Clinica
                 }
                 if (Request.QueryString["id"] != null && !IsPostBack)
                 {
-                    listaEspecialidades = ctrlEspecialidades.ListarEspecialidades();
+                    listaEspecialidades = ctrlEspecialidades.ListarEspecialidades();                    
                     chkEspecialidades.DataSource = listaEspecialidades;
-                    chkEspecialidades.DataBind();
+                    chkEspecialidades.DataBind();                    
                     Session.Add("Especialidades", listaEspecialidades);
 
                     listaDias = ctrlHorariosTrabajo.listar();
@@ -57,7 +57,15 @@ namespace Clinica
                     txtHorarioSalida.Text = auxMedico.HorarioSalida.ToString();
 
                     //Agregar los chkEspecialidades del Medico que se quiere modificar
+                    List<Especialidades> listaFiltrada = ctrlEspecialidades.ListarEspecialidadPorMedico(int.Parse(Request.QueryString["id"]));
 
+                    foreach (ListItem item in chkEspecialidades.Items)
+                    {
+                        if (listaFiltrada.Exists(x => x.Nombre.ToUpper() == item.Value.ToUpper()))
+                        {
+                            item.Selected = true;
+                        }
+                    }
                 }
                 else if (!IsPostBack)
                 {
@@ -74,7 +82,6 @@ namespace Clinica
             }
             catch (Exception ex)
             {
-
                 throw ex;
             }
         }

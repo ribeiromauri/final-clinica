@@ -40,6 +40,34 @@ namespace Controlador
                 datos.cerrarConexion();
             }
         }
+
+        public List<Especialidades> ListarEspecialidadPorMedico(int ID)
+        {
+            List<Especialidades> listaFiltrada = new List<Especialidades>();
+            try
+            {
+                datos.setConsulta("SELECT E.ID, E.NOMBRE FROM ESPECIALIDADES E INNER JOIN ESPECIALIDAD_X_MEDICO EPM ON EPM.ID_ESPECIALIDAD = E.ID WHERE EPM.ID_MEDICO = @ID");
+                datos.setParametro("@ID", ID);
+                datos.ejecutarLectura();
+                while (datos.Lector.Read())
+                {
+                    Especialidades aux = new Especialidades();
+                    aux.ID = (int)datos.Lector["ID"];
+                    aux.Nombre = (string)datos.Lector["NOMBRE"];
+
+                    listaFiltrada.Add(aux);
+                }
+                return listaFiltrada;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
         public bool AgregarEspecialidadPorMedico(Medicos aux)
         {
             int id = 0;
