@@ -12,14 +12,22 @@ namespace Controlador
     {
         public List<Medicos> ListaMedicos { get; set; }
 
-        public List<HorariosTrabajo> listar()
+        public List<HorariosTrabajo> listar(string id = "")
         {
             AccesoDatos datos = new AccesoDatos();
             List<HorariosTrabajo> lista = new List<HorariosTrabajo>();
 
             try
             {
-                datos.setConsulta("SELECT ID, DIA FROM DIAS");
+                if (id != "")
+                {
+                    datos.setConsulta("SELECT D.ID, D.DIA FROM DIAS D INNER JOIN HORARIOS_TRABAJO HT ON HT.DIA = D.DIA WHERE HT.ID_MEDICO = @ID ");
+                    datos.setParametro("@ID", id);
+                }
+                else
+                {
+                    datos.setConsulta("SELECT ID, DIA FROM DIAS");
+                }
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())

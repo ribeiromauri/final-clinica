@@ -66,6 +66,16 @@ namespace Clinica
                             item.Selected = true;
                         }
                     }
+
+                    List<HorariosTrabajo> listaFiltroHorarios = ctrlHorariosTrabajo.listar(Request.QueryString["id"]);
+
+                    foreach (ListItem item in chkDiasTrabajo.Items)
+                    {
+                        if (listaFiltroHorarios.Exists(x => x.Dia.ToUpper() == item.Value.ToUpper()))
+                        {
+                            item.Selected = true;
+                        }
+                    }
                 }
                 else if (!IsPostBack)
                 {
