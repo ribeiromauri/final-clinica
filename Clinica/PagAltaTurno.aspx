@@ -47,6 +47,8 @@
                 <asp:DropDownList ID="ddlMedicos" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlMedicos_SelectedIndexChanged"></asp:DropDownList>
             </div>
         </div>
+        <%if (ValidarDias)
+            { %>
         <div class="mb-3">
             <table class="table-striped table-bordered">
                 <thead>
@@ -65,6 +67,7 @@
                 </tbody>
             </table>
         </div>
+        <%} %>
         <div class="mb-3">
             <asp:Calendar ID="calDias" runat="server" OnSelectionChanged="calDias_SelectionChanged"></asp:Calendar>
             <asp:Label ID="lblValidarDia" runat="server" Text=" "></asp:Label>

@@ -13,6 +13,7 @@ namespace Clinica
     {
         public List<Especialidades> listaEspecialidades { get; set; }
         public List<Medicos> listaMedicos { get; set; }
+        public bool ValidarDias { get; set; }
 
         public ControladorEspecialidades ctrlEsp = new ControladorEspecialidades();
         public ControladorMedicos ctrlMedicos = new ControladorMedicos();
@@ -33,7 +34,6 @@ namespace Clinica
                 ddlEspecialidades.DataTextField = "Nombre";
                 ddlEspecialidades.DataValueField = "ID";
                 ddlEspecialidades.DataBind();
-
 
             }
         }
@@ -65,6 +65,15 @@ namespace Clinica
 
             ddlHorarios.DataSource = ctrlMedicos.ListarHorarios(id);
             ddlHorarios.DataBind();
+
+            if (repDias.Items.Count == 0)
+            {
+                ValidarDias = false;
+            }
+            else
+            {
+                ValidarDias = true;
+            }
         }
 
         protected void buscarPaciente_Click(object sender, EventArgs e)
