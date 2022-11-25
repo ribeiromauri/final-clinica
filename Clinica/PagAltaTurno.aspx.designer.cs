@@ -96,6 +96,15 @@ namespace Clinica
         protected global::System.Web.UI.WebControls.DropDownList ddlMedicos;
 
         /// <summary>
+        /// Control repDias.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater repDias;
+
+        /// <summary>
         /// Control calDias.
         /// </summary>
         /// <remarks>
@@ -123,13 +132,13 @@ namespace Clinica
         protected global::System.Web.UI.WebControls.Label lblTest;
 
         /// <summary>
-        /// Control ddlDias.
+        /// Control txtFecha.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlDias;
+        protected global::System.Web.UI.WebControls.TextBox txtFecha;
 
         /// <summary>
         /// Control ddlHorarios.

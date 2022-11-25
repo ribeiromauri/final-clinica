@@ -48,6 +48,24 @@
             </div>
         </div>
         <div class="mb-3">
+            <table class="table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th scope="col" style="text-align: center">Dias Laborales</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <asp:Repeater runat="server" ID="repDias">
+                        <ItemTemplate>
+                            <tr>
+                                <td scope="row" style="text-align: center"><%#Eval("Dia") %></td>
+                            </tr>
+                        </ItemTemplate>
+                    </asp:Repeater>
+                </tbody>
+            </table>
+        </div>
+        <div class="mb-3">
             <asp:Calendar ID="calDias" runat="server" OnSelectionChanged="calDias_SelectionChanged"></asp:Calendar>
             <asp:Label ID="lblValidarDia" runat="server" Text=" "></asp:Label>
         </div>
@@ -55,13 +73,13 @@
             <asp:Label ID="lblTest" runat="server" Text=" "></asp:Label>
         </div>
         <div class="mb-3">
-            <label class="form-label">Día</label>
+            <label class="form-label">Fecha Turno</label>
             <div>
-                <asp:DropDownList ID="ddlDias" runat="server"></asp:DropDownList>
+                <asp:TextBox ID="txtFecha" runat="server" ReadOnly="true"></asp:TextBox>
             </div>
         </div>
         <div class="mb-3">
-            <label class="form-label">Horario</label>
+            <label class="form-label">Horario Turno</label>
             <div>
                 <asp:DropDownList ID="ddlHorarios" runat="server"></asp:DropDownList>
             </div>

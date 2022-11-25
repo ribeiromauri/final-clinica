@@ -48,13 +48,10 @@ namespace Clinica
             ddlMedicos.DataBind();
 
             //Revisar
-            if (ddlMedicos.Items.Count == 1)
-            {
-                ddlMedicos_SelectedIndexChanged(sender, e);
-            }
+            ddlMedicos_SelectedIndexChanged(sender, e);
+
             if(ddlMedicos.Items.Count == 0)
             {
-                ddlDias.Items.Clear();
                 ddlHorarios.Items.Clear();
             }
         }
@@ -63,8 +60,8 @@ namespace Clinica
         {
             int id = int.Parse(ddlMedicos.SelectedItem.Value);
 
-            ddlDias.DataSource = ctrlMedicos.ListarDias(id);
-            ddlDias.DataBind();
+            repDias.DataSource = ctrlMedicos.ListarDias(id);
+            repDias.DataBind();
 
             ddlHorarios.DataSource = ctrlMedicos.ListarHorarios(id);
             ddlHorarios.DataBind();
@@ -119,11 +116,44 @@ namespace Clinica
             if(calDias.SelectedDate < calDias.TodaysDate)
             {
                 lblValidarDia.Text = "La fecha ya pasó. Seleccione otra";
+                lblTest.Text = " ";
+                txtFecha.Text = " ";
             }
             else
             {
-                lblTest.Text = calDias.SelectedDate.DayOfWeek.ToString();
+                if (calDias.SelectedDate.DayOfWeek.ToString() == "Monday")
+                {
+                    lblTest.Text = "Lunes";
+                }
+                if (calDias.SelectedDate.DayOfWeek.ToString() == "Tuesday")
+                {
+                    lblTest.Text = "Martes";
+                }
+                if (calDias.SelectedDate.DayOfWeek.ToString() == "Wednesday")
+                {
+                    lblTest.Text = "Miércoles";
+                }
+                if (calDias.SelectedDate.DayOfWeek.ToString() == "Thursday")
+                {
+                    lblTest.Text = "Jueves";
+                }
+                if (calDias.SelectedDate.DayOfWeek.ToString() == "Friday")
+                {
+                    lblTest.Text = "Viernes";
+                }
+                if (calDias.SelectedDate.DayOfWeek.ToString() == "Saturday")
+                {
+                    lblTest.Text = "Sábado";
+                }
+                if (calDias.SelectedDate.DayOfWeek.ToString() == "Sunday")
+                {
+                    lblTest.Text = "Domingo";
+                }
+
+
                 lblValidarDia.Text = " ";
+
+                txtFecha.Text = calDias.SelectedDate.ToShortDateString();
             }
         }
     }
