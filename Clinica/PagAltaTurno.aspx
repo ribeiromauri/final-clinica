@@ -19,7 +19,7 @@
     <div style="display: flex; flex-direction: column; justify-content: center;" class="mb-3">
         <div style="display: inline-flex;">
             <label class="form-label">DNI Paciente</label>
-            <asp:TextBox CssClass="form-control inputSize" ID="DNI" runat="server" required="required" TextMode="Number"></asp:TextBox>
+            <asp:TextBox CssClass="form-control inputSize" ID="txtDNI" runat="server" required="required" TextMode="Number"></asp:TextBox>
             <asp:Button CssClass="btn boton" ID="buscarPacinte" runat="server" Text="🔎" OnClick="buscarPaciente_Click" />
         </div>
         <div class="mb-3">
@@ -89,11 +89,11 @@
         </div>
         <div class="mb-3">
             <label class="form-label">Observaciones</label>
-            <asp:TextBox CssClass="form-control inputSize" ID="TextBox5" runat="server"></asp:TextBox>
+            <asp:TextBox CssClass="form-control inputSize" ID="txtObservaciones" runat="server"></asp:TextBox>
         </div>
         <div class="mb-3" style="margin-top: 30px">
-            <asp:Button ID="btnAceptar" runat="server" Text="Agregar Turno" CssClass="btn btn-success" />
-            <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" CssClass="btn btn-danger" />
+            <asp:Button ID="btnAceptar" runat="server" Text="Agregar Turno" CssClass="btn btn-success" OnClick="btnAceptar_Click"/>
+            <a href="PagTurnos.aspx" class="btn btn-danger">Cancelar</a>
         </div>
     </div>
 </asp:Content>

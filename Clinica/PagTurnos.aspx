@@ -23,17 +23,18 @@
                 <ItemTemplate>
                     <tr>
                         <th scope="row" style="text-align: center"><%#Eval("ID") %></th>
-                        <td style="text-align: center"><%#Eval("Medico.Nombre") %>  <%#Eval("Medico.Apellido") %></td>
                         <td style="text-align: center"><%#Eval("Paciente.Nombre") %>  <%#Eval("Paciente.Apellido") %></td>
+                        <td style="text-align: center"><%#Eval("Medico.Nombre") %>  <%#Eval("Medico.Apellido") %></td>
                         <td style="text-align: center"><%#Eval("Especialidad.Nombre") %></td>
                         <td style="text-align: center"><%#Eval("Fecha") %></td>
                         <td style="text-align: center"><%#Eval("HoraEntrada") %>hs</td>
                         <td>
-                            <a href="PagAltaMedico.aspx?id=<%#Eval("ID") %>"><i class="fas fa-search-plus" style="color: black;"></i></a>
+                            <a href="PagAltaTurno.aspx?id=<%#Eval("ID") %>"><i class="fas fa-search-plus" style="color: black;"></i></a>
                         </td>
                     </tr>
                 </ItemTemplate>
             </asp:Repeater>
         </tbody>
     </table>
+    <a href="PagAltaTurno.aspx" class="btn btn-primary">Agregar Turno</a>
 </asp:Content>

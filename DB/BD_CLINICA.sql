@@ -391,3 +391,23 @@ BEGIN
 		ROLLBACK TRANSACTION
 	END CATCH
 END
+GO
+
+CREATE PROCEDURE SP_ALTA_TURNO(
+	@IDMedico int,
+	@IDPaciente int,
+	@IDEspecialidad int,
+	@HoraEntrada int,
+	@Fecha date,
+	@Observaciones varchar(200)
+)
+AS
+BEGIN
+	BEGIN TRY
+		INSERT INTO TURNOS VALUES (@IDMedico, @IDPaciente, @IDEspecialidad, @HoraEntrada, @Fecha, @Observaciones, 1)
+	END TRY
+	BEGIN CATCH
+		RAISERROR('No se pudo agregar el turno', 16, 1)
+		ROLLBACK TRANSACTION
+	END CATCH
+END

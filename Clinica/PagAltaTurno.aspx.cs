@@ -13,18 +13,21 @@ namespace Clinica
     {
         public List<Especialidades> listaEspecialidades { get; set; }
         public List<Medicos> listaMedicos { get; set; }
+        public List<Pacientes> listaPacientes { get; set; }
+        public List<Turnos> listaTurnos { get; set; }
         public bool ValidarDias { get; set; }
 
         public ControladorEspecialidades ctrlEsp = new ControladorEspecialidades();
         public ControladorMedicos ctrlMedicos = new ControladorMedicos();
         public ControladorPacientes ctrlPacientes = new ControladorPacientes();
+        public ControladorTurnos ctrlTurnos = new ControladorTurnos();
         protected void Page_Load(object sender, EventArgs e)
         {
             ControladorMedicos controladorMedicos = new ControladorMedicos();
+            ValidarDias = true;
 
             if (!IsPostBack)
             {
-
                 listaMedicos = ctrlMedicos.listar();
                 Session["listaMedicos"] = listaMedicos;
 
@@ -34,6 +37,33 @@ namespace Clinica
                 ddlEspecialidades.DataTextField = "Nombre";
                 ddlEspecialidades.DataValueField = "ID";
                 ddlEspecialidades.DataBind();
+
+            }
+            if(!IsPostBack && Request.QueryString["id"] != null)
+            {
+                listaTurnos = ctrlTurnos.Listar(Request.QueryString["id"]);
+                Turnos seleccionado = listaTurnos[0];
+
+                txtDNI.Text = seleccionado.Paciente.DNI;
+
+                ddlEspecialidades.SelectedValue = seleccionado.Especialidad.ID.ToString();
+
+                ddlMedicos.DataSource = ctrlMedicos.listar(seleccionado.Medico.ID.ToString());
+                ddlMedicos.DataTextField = "Apellido";
+                ddlMedicos.DataValueField = "ID";
+                ddlMedicos.DataBind();
+
+                repDias.DataSource = ctrlMedicos.ListarDias(int.Parse(seleccionado.Medico.ID.ToString()));
+                repDias.DataBind();
+
+                txtFecha.Text = seleccionado.Fecha.ToShortDateString();
+
+                ddlHorarios.DataSource = ctrlMedicos.ListarHorarios(int.Parse(seleccionado.Medico.ID.ToString()));
+                ddlHorarios.DataBind();
+
+                ddlHorarios.SelectedValue = seleccionado.HoraEntrada.ToString();
+
+                txtObservaciones.Text = seleccionado.Observaciones;
 
             }
         }
@@ -48,8 +78,10 @@ namespace Clinica
             ddlMedicos.DataBind();
 
             //Revisar
-            ddlMedicos_SelectedIndexChanged(sender, e);
-
+            if(ddlMedicos.Items.Count != 0)
+            {
+                ddlMedicos_SelectedIndexChanged(sender, e);
+            }
             if(ddlMedicos.Items.Count == 0)
             {
                 ddlHorarios.Items.Clear();
@@ -81,7 +113,7 @@ namespace Clinica
             try
             {
                 List<Pacientes> listaPacientes = ctrlPacientes.listar();
-                List<Pacientes> listaFiltrada = listaPacientes.FindAll(x => x.DNI.Contains(DNI.Text));
+                List<Pacientes> listaFiltrada = listaPacientes.FindAll(x => x.DNI.Contains(txtDNI.Text));
                 if (listaFiltrada.Count == 0)
                 {
                     paciente.Visible = false;
@@ -89,7 +121,7 @@ namespace Clinica
                     cancelar.Visible = false;
 
                     txtValidar.Visible = true;
-                    txtValidar.Text = "No existen registros para el DNI " + DNI.Text;
+                    txtValidar.Text = "No existen registros para el DNI " + txtDNI.Text;
                     txtAlta.Visible = true;
                     txtAlta.Text = "Registrar paciente";
 
@@ -163,6 +195,42 @@ namespace Clinica
                 lblValidarDia.Text = " ";
 
                 txtFecha.Text = calDias.SelectedDate.ToShortDateString();
+            }
+        }
+
+        protected void btnAceptar_Click(object sender, EventArgs e)
+        {
+            Turnos turnos = new Turnos();
+            listaPacientes = ctrlPacientes.listar();
+
+            try
+            {
+                turnos.Medico = new Medicos();
+                turnos.Medico.ID = int.Parse(ddlMedicos.SelectedItem.Value);
+
+                turnos.Paciente = new Pacientes();
+                foreach (Pacientes item in listaPacientes)
+                {
+                    if(item.DNI == txtDNI.Text)
+                    {
+                        turnos.Paciente.ID = item.ID;
+                    }
+                }
+
+                turnos.Especialidad = new Especialidades();
+                turnos.Especialidad.ID = int.Parse(ddlEspecialidades.SelectedItem.Value);
+
+                turnos.HoraEntrada = int.Parse(ddlHorarios.SelectedValue.ToString());
+                turnos.Fecha = DateTime.Parse(txtFecha.Text);
+                turnos.Observaciones = txtObservaciones.Text;
+
+                ctrlTurnos.AgregarTurno(turnos);
+                Response.Redirect("PagTurnos.aspx", false);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
             }
         }
     }
