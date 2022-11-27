@@ -14,108 +14,111 @@
 </head>
 <body>
     <form id="form1" runat="server">
-<div class="container-fluid">
-    <div class="row flex-nowrap">
-        <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
-            <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
-                <a href="#" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-                    <span class="fs-5 d-none d-sm-inline" style="margin-top:15px">Clinica</span>
-                </a>
-                <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
-                    <li class="nav-item">
-                        <a href="#" class="nav-link align-middle px-0">
-                            <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Inicio</span>
+        <div class="container-fluid">
+            <div class="row flex-nowrap">
+                <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
+                    <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
+                        <a href="#" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+                            <span class="fs-5 d-none d-sm-inline" style="margin-top: 15px">Clinica</span>
                         </a>
-                    </li>
-                    <li>
-                        <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
-                            <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Turnos</span> </a>
-                        <ul class="collapse show nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
-                            <li class="w-100">
-                                <a href="PagTurnos.aspx" class="nav-link px-0"> <span class="d-none d-sm-inline" style="padding-left: 3rem; color:white;">Listar turnos</span></a>
+                        <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
+                            <li class="nav-item">
+                                <a href="#" class="nav-link align-middle px-0">
+                                    <i class="fs-4 bi-house"></i><span class="ms-1 d-none d-sm-inline">Inicio</span>
+                                </a>
                             </li>
                             <li>
-                                <a href="PagAltaTurno.aspx" class="nav-link px-0"> <span class="d-none d-sm-inline" style="padding-left: 3rem; color:white;">Asignar turno</span> </a>
+                                <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
+                                    <i class="fs-4 bi-speedometer2"></i><span class="ms-1 d-none d-sm-inline">Turnos</span> </a>
+                                <ul class="collapse show nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
+                                    <li class="w-100">
+                                        <a href="PagTurnos.aspx" class="nav-link px-0"><span class="d-none d-sm-inline" style="padding-left: 3rem; color: white;">Listar turnos</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="PagAltaTurno.aspx" class="nav-link px-0"><span class="d-none d-sm-inline" style="padding-left: 3rem; color: white;">Asignar turno</span> </a>
+                                    </li>
+                                </ul>
                             </li>
-                        </ul>
-                    </li>
-                    
-                    <li>
-                        <a href="#submenu2" data-bs-toggle="collapse" class="nav-link px-0 align-middle ">
-                            <i class="fs-4 bi-bootstrap"></i> <span class="ms-1 d-none d-sm-inline">Pacientes</span></a>
-                        <ul class="collapse nav flex-column ms-1" id="submenu2" data-bs-parent="#menu">
-                            <li class="w-100">
-                                <a href="PagPacientes.aspx" class="nav-link px-0"> <span class="d-none d-sm-inline" style="padding-left: 3rem; color:white;">Listar pacientes</span></a>
-                            </li>
+
                             <li>
-                                <a href="PagAltaPaciente.aspx" class="nav-link px-0"> <span class="d-none d-sm-inline" style="padding-left: 3rem; color:white;">Agregar paciente</span></a>
+                                <a href="#submenu2" data-bs-toggle="collapse" class="nav-link px-0 align-middle ">
+                                    <i class="fs-4 bi-bootstrap"></i><span class="ms-1 d-none d-sm-inline">Pacientes</span></a>
+                                <ul class="collapse nav flex-column ms-1" id="submenu2" data-bs-parent="#menu">
+                                    <li class="w-100">
+                                        <a href="PagPacientes.aspx" class="nav-link px-0"><span class="d-none d-sm-inline" style="padding-left: 3rem; color: white;">Listar pacientes</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="PagAltaPaciente.aspx" class="nav-link px-0"><span class="d-none d-sm-inline" style="padding-left: 3rem; color: white;">Agregar paciente</span></a>
+                                    </li>
+                                </ul>
                             </li>
-                        </ul>
-                    </li>
 
-                    <li>
-                        <a href="#submenu3" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
-                            <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline">Medicos</span> </a>
-                            <ul class="collapse nav flex-column ms-1" id="submenu3" data-bs-parent="#menu">
-                            <li class="w-100">
-                                <a href="PagMedicos.aspx" class="nav-link px-0"> <span class="d-none d-sm-inline" style="padding-left: 3rem; color:white;">Listar médicos</span></a>
-                            </li>
                             <li>
-                                <a href="PagAltaMedico.aspx" class="nav-link px-0"> <span class="d-none d-sm-inline" style="padding-left: 3rem; color:white;">Agregar médico</span></a>
-                            </li>
-                            
-                        </ul>
-                    </li>
+                                <a href="#submenu3" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
+                                    <i class="fs-4 bi-grid"></i><span class="ms-1 d-none d-sm-inline">Medicos</span> </a>
+                                <ul class="collapse nav flex-column ms-1" id="submenu3" data-bs-parent="#menu">
+                                    <li class="w-100">
+                                        <a href="PagMedicos.aspx" class="nav-link px-0"><span class="d-none d-sm-inline" style="padding-left: 3rem; color: white;">Listar médicos</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="PagAltaMedico.aspx" class="nav-link px-0"><span class="d-none d-sm-inline" style="padding-left: 3rem; color: white;">Agregar médico</span></a>
+                                    </li>
 
-                    <li>
-                        <a href="#submenu5" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
-                            <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline">Recepcionistas</span> </a>
-                            <ul class="collapse nav flex-column ms-1" id="submenu5" data-bs-parent="#menu">
-                            <li class="w-100">
-                                <a href="PagRecepcionista.aspx" class="nav-link px-0"> <span class="d-none d-sm-inline" style="padding-left: 3rem; color:white;">Listar recepcionistas</span></a>
+                                </ul>
                             </li>
+
                             <li>
-                                <a href="PagAltaRecepcionista.aspx" class="nav-link px-0"> <span class="d-none d-sm-inline" style="padding-left: 3rem; color:white;">Agregar recepcionista</span></a>
-                            </li>
-                            
-                        </ul>
-                    </li>
+                                <a href="#submenu5" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
+                                    <i class="fs-4 bi-grid"></i><span class="ms-1 d-none d-sm-inline">Recepcionistas</span> </a>
+                                <ul class="collapse nav flex-column ms-1" id="submenu5" data-bs-parent="#menu">
+                                    <li class="w-100">
+                                        <a href="PagRecepcionista.aspx" class="nav-link px-0"><span class="d-none d-sm-inline" style="padding-left: 3rem; color: white;">Listar recepcionistas</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="PagAltaRecepcionista.aspx" class="nav-link px-0"><span class="d-none d-sm-inline" style="padding-left: 3rem; color: white;">Agregar recepcionista</span></a>
+                                    </li>
 
-                     <li>
-                        <a href="#submenu4" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
-                            <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline">Usuarios</span> </a>
-                            <ul class="collapse nav flex-column ms-1" id="submenu4" data-bs-parent="#menu">
-                            <li class="w-100">
-                                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline" style="padding-left: 3rem; color:white;">Listar usuarios</span></a>
+                                </ul>
                             </li>
+
                             <li>
-                                <a href="#" class="nav-link px-0 align-middle"> <span class="ms-1 d-none d-sm-inline" style="padding-left: 3rem; color:white;">Agregar usuario</span></a>
+                                <a href="#submenu4" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
+                                    <i class="fs-4 bi-grid"></i><span class="ms-1 d-none d-sm-inline">Usuarios</span> </a>
+                                <ul class="collapse nav flex-column ms-1" id="submenu4" data-bs-parent="#menu">
+                                    <li class="w-100">
+                                        <a href="#" class="nav-link px-0"><span class="d-none d-sm-inline" style="padding-left: 3rem; color: white;">Listar usuarios</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="nav-link px-0 align-middle"><span class="ms-1 d-none d-sm-inline" style="padding-left: 3rem; color: white;">Agregar usuario</span></a>
+                                    </li>
+
+                                </ul>
                             </li>
-                            
+                            <%if (Session["usuario"] == null)
+                                { %>
+                            <li>
+                                <a href="Login.aspx" class="nav-link px-0"><span class="d-none d-sm-inline" style="padding-left: 0.2rem;">Loguearse</span></a>
+                            </li>
+                            <%} %>
+                            <%if (Session["usuario"] != null)
+                                {%>
+                            <li>
+                                <a href="Login.aspx" class="nav-link px-0"><span class="d-none d-sm-inline" style="padding-left: 0.2rem;">Salir</span></a>
+                            </li>
+                            <%} %>
                         </ul>
-                    </li>
-
-                    <li>
-                        <a href="#" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
-                            <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline">Cerrar sesión</span> </a>
-                    </li>
-                    <li>
-                        <a href="Login.aspx" class="nav-link px-0"> <span class="d-none d-sm-inline" style="padding-left: 0.2rem;">Loguearse</span></a>
-                    </li>
-
-                </ul>
+                    </div>
+                </div>
+                <div class="col py-3">
+                    <div class="container">
+                        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server"></asp:ContentPlaceHolder>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="col py-3">
-            <div class="container">
-            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server"></asp:ContentPlaceHolder>
-        </div>
-        </div>
-    </div>
-</div>
 
-        
-        
+
+
     </form>
 </body>
 </html>
