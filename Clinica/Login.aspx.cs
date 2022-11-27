@@ -13,7 +13,11 @@ namespace Clinica
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Session["usuario"] != null)
+            {
+                Session.Add("error", "Ya hay un usuario logueado");
+                Response.Redirect("PagError.aspx");
+            }
         }
 
         protected void btnLoguear_Click(object sender, EventArgs e)
@@ -30,12 +34,16 @@ namespace Clinica
                     Session.Add("usuario", usuario);
                     Response.Redirect("PagPrincipal.aspx", false);
                 }
+                else
+                {
+                    Session.Add("error", "DNI o Contraseña incorrectos");
+                    Response.Redirect("PagError.aspx", false);
+                }
 
             }
             catch (Exception ex)
             {
-
-                throw ex;
+                Session.Add("error", ex.ToString());
             }
         }
     }

@@ -7,14 +7,13 @@ using System.Web.UI.WebControls;
 
 namespace Clinica
 {
-    public partial class PagPrincipal : System.Web.UI.Page
+    public partial class PagError : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["usuario"] == null)
+            if (Session["error"] != null)
             {
-                Session.Add("error", "No hay ningún usuario logueado");
-                Response.Redirect("PagError.aspx");
+                lblMensajeError.Text = Session["error"].ToString();
             }
         }
     }

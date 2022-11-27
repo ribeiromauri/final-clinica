@@ -19,6 +19,12 @@ namespace Clinica
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["usuario"] == null)
+            {
+                Session.Add("error", "No hay ningún usuario logueado");
+                Response.Redirect("PagError.aspx");
+            }
+
             ConfirmarEliminacion = false;
             BotonEliminar = false;
 

@@ -14,6 +14,12 @@ namespace Clinica
         public List<Pacientes> ListaPacientes { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["usuario"] == null)
+            {
+                Session.Add("error", "No hay ningún usuario logueado");
+                Response.Redirect("PagError.aspx");
+            }
+
             ControladorPacientes controlador = new ControladorPacientes();
             ListaPacientes = controlador.listar();
 

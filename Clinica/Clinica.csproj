@@ -73,6 +73,7 @@
     <Content Include="PagAltaMedico.aspx" />
     <Content Include="PagAltaRecepcionista.aspx" />
     <Content Include="PagAltaTurno.aspx" />
+    <Content Include="PagError.aspx" />
     <Content Include="PagMedicos.aspx" />
     <Content Include="PagPacientes.aspx" />
     <Content Include="PagPrincipal.aspx" />
@@ -125,6 +126,13 @@
     </Compile>
     <Compile Include="PagAltaTurno.aspx.designer.cs">
       <DependentUpon>PagAltaTurno.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PagError.aspx.cs">
+      <DependentUpon>PagError.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PagError.aspx.designer.cs">
+      <DependentUpon>PagError.aspx</DependentUpon>
     </Compile>
     <Compile Include="PagMedicos.aspx.cs">
       <DependentUpon>PagMedicos.aspx</DependentUpon>

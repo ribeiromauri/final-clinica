@@ -14,6 +14,17 @@ namespace Clinica
         public List<Medicos> listaMedicos { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["usuario"] == null)
+            {
+                Session.Add("error", "No hay ningún usuario logueado");
+                Response.Redirect("PagError.aspx");
+            }
+            if (((Usuarios)Session["usuario"]).Tipo == TipoUsuario.MEDICO)
+            {
+                Session.Add("error", "No tenés permisos para ingresar a esta pantalla");
+                Response.Redirect("PagError.aspx", false);
+            }
+
             ControladorMedicos controlador = new ControladorMedicos();
             listaMedicos = controlador.listar();
 
