@@ -48,6 +48,7 @@
     <Compile Include="ControladorPacientes.cs" />
     <Compile Include="ControladorRecepcionista.cs" />
     <Compile Include="ControladorTurnos.cs" />
+    <Compile Include="ControladorUsuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

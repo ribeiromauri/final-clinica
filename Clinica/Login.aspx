@@ -33,8 +33,7 @@
                 <label for="passUsuario" class="form-label">Contraseña</label>
                 <asp:TextBox runat="server" CssClass="form-control" type="password" required="required" ID="passUsuario" />
             </div>
-
-            <asp:Button runat="server" CssClass="btn btn-primary" Text="Ingresar" />
+            <asp:Button ID="btnLoguear" runat="server" Text="Ingresar" CssClass="btn btn-primary" OnClick="btnLoguear_Click"/>
         </div>
     </form>
 </body>

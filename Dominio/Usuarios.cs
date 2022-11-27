@@ -8,9 +8,9 @@ namespace Dominio
 {
     public enum TipoUsuario
     {
-        MEDICO = 1,
+        ADMIN = 1,
         RECEPCIONISTA = 2,
-        ADMIN = 3
+        MEDICO = 3
     }
     public class Usuarios
     {
@@ -19,5 +19,6 @@ namespace Dominio
         public string Contrasenia { get; set; }
         public TipoUsuario Tipo { get; set; }
         public bool Estado { get; set; }
+
     }
 }
