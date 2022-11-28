@@ -17,6 +17,8 @@ namespace Clinica
         public List<Turnos> listaTurnos { get; set; }
         public bool ValidarDias { get; set; }
 
+        public int IDMedico { get; set; }
+
         public ControladorEspecialidades ctrlEsp = new ControladorEspecialidades();
         public ControladorMedicos ctrlMedicos = new ControladorMedicos();
         public ControladorPacientes ctrlPacientes = new ControladorPacientes();
@@ -96,12 +98,12 @@ namespace Clinica
 
         protected void ddlMedicos_SelectedIndexChanged(object sender, EventArgs e)
         {
-            int id = int.Parse(ddlMedicos.SelectedItem.Value);
+            IDMedico = int.Parse(ddlMedicos.SelectedItem.Value);
 
-            repDias.DataSource = ctrlMedicos.ListarDias(id);
+            repDias.DataSource = ctrlMedicos.ListarDias(IDMedico);
             repDias.DataBind();
 
-            ddlHorarios.DataSource = ctrlMedicos.ListarHorarios(id);
+            ddlHorarios.DataSource = ctrlMedicos.ListarHorarios(IDMedico);
             ddlHorarios.DataBind();
 
             if (repDias.Items.Count == 0)
@@ -201,6 +203,17 @@ namespace Clinica
                 lblValidarDia.Text = " ";
 
                 txtFecha.Text = calDias.SelectedDate.ToShortDateString();
+
+                List<int> horariosMedico = ctrlMedicos.ListarHorarios(IDMedico);
+                List<int> horariosEntradaNoDisponibles = ctrlTurnos.HorariosNoDisponibles(IDMedico, calDias.SelectedDate);
+
+                foreach (int horarios in horariosEntradaNoDisponibles)
+                {
+                    horariosMedico.Remove(horarios);
+                }
+
+                ddlHorarios.DataSource = horariosMedico;
+                ddlHorarios.DataBind();
             }
         }
 
@@ -238,6 +251,6 @@ namespace Clinica
 
                 throw ex;
             }
-        }
+        }                
     }
 }

@@ -136,5 +136,35 @@ namespace Controlador
                 throw ex;
             }
         }
+
+        public List<int> HorariosNoDisponibles(int id, DateTime fecha)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            List<int> listaHorarios = new List<int>();
+            int horario;
+            try
+            {
+                datos.setConsulta("SELECT ENTRADA FROM TURNOS WHERE ID_MEDICO = @id AND FECHA = @fecha AND ESTADO = 1");
+                datos.setParametro("@id", id);
+                datos.setParametro("@fecha", fecha);
+                datos.ejecutarAccion();
+
+                while (datos.Lector.Read())
+                {
+                    horario = (int)datos.Lector["ENTRADA"];
+                    listaHorarios.Add(horario);
+                }
+
+                return listaHorarios;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
     }
+
+    
 }
