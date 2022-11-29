@@ -147,7 +147,7 @@ namespace Controlador
                 datos.setConsulta("SELECT ENTRADA FROM TURNOS WHERE ID_MEDICO = @id AND FECHA = @fecha AND ESTADO = 1");
                 datos.setParametro("@id", id);
                 datos.setParametro("@fecha", fecha);
-                datos.ejecutarAccion();
+                datos.ejecutarLectura();
 
                 while (datos.Lector.Read())
                 {

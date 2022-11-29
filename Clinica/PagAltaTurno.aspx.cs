@@ -16,7 +16,6 @@ namespace Clinica
         public List<Pacientes> listaPacientes { get; set; }
         public List<Turnos> listaTurnos { get; set; }
         public bool ValidarDias { get; set; }
-
         public int IDMedico { get; set; }
 
         public ControladorEspecialidades ctrlEsp = new ControladorEspecialidades();
@@ -199,13 +198,14 @@ namespace Clinica
                     lblTest.Text = "Domingo";
                 }
 
-
                 lblValidarDia.Text = " ";
 
                 txtFecha.Text = calDias.SelectedDate.ToShortDateString();
 
+                IDMedico = int.Parse(ddlMedicos.SelectedValue.ToString());
+
                 List<int> horariosMedico = ctrlMedicos.ListarHorarios(IDMedico);
-                List<int> horariosEntradaNoDisponibles = ctrlTurnos.HorariosNoDisponibles(IDMedico, calDias.SelectedDate);
+                List<int> horariosEntradaNoDisponibles = ctrlTurnos.HorariosNoDisponibles(IDMedico, DateTime.Parse(calDias.SelectedDate.ToShortDateString()));
 
                 foreach (int horarios in horariosEntradaNoDisponibles)
                 {
