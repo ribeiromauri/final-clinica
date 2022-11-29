@@ -29,6 +29,11 @@ namespace Clinica
                 Session.Add("error", "No hay ningún usuario logueado");
                 Response.Redirect("PagError.aspx");
             }
+            if (((Usuarios)Session["usuario"]).Tipo == TipoUsuario.MEDICO)
+            {
+                Session.Add("error", "No tenés permisos para ingresar a esta pantalla");
+                Response.Redirect("PagError.aspx", false);
+            }
 
             ControladorMedicos controladorMedicos = new ControladorMedicos();
             ValidarDias = true;
