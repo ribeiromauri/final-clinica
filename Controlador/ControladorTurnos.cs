@@ -49,6 +49,8 @@ namespace Controlador
                     aux.Observaciones = (string)datos.Lector["OBSERVACIONES"];
                     aux.Estado = (bool)datos.Lector["ESTADO"];
 
+                    if (System.DateTime.Now > aux.Fecha && System.DateTime.Now.Hour > aux.HoraEntrada) aux.Estado = false;
+
                     lista.Add(aux);
                 }
 
