@@ -256,6 +256,7 @@ namespace Clinica
 
                 throw ex;
             }
-        }                
+        }        
+        
     }
 }

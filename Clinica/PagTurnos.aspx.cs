@@ -47,5 +47,10 @@ namespace Clinica
                 repRepetidor.DataBind();
             }
         }
+        public bool TurnoVigente(object Estado)
+        {
+            if ((bool)Estado) return true;
+            return false;
+        }
     }
 }

@@ -49,7 +49,7 @@ namespace Controlador
                     aux.Observaciones = (string)datos.Lector["OBSERVACIONES"];
                     aux.Estado = (bool)datos.Lector["ESTADO"];
 
-                    if (System.DateTime.Now > aux.Fecha && System.DateTime.Now.Hour > aux.HoraEntrada) aux.Estado = false;
+                    if (System.DateTime.Now > aux.Fecha) aux.Estado = false;
 
                     lista.Add(aux);
                 }
@@ -100,6 +100,8 @@ namespace Controlador
                     aux.Fecha = (DateTime)datos.Lector["FECHA"];
                     aux.Observaciones = (string)datos.Lector["OBSERVACIONES"];
                     aux.Estado = (bool)datos.Lector["ESTADO"];
+
+                    if (System.DateTime.Now > aux.Fecha) aux.Estado = false;
 
                     lista.Add(aux);
                 }
