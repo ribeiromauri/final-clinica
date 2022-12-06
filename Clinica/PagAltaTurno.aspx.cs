@@ -49,21 +49,23 @@ namespace Clinica
                 ddlEspecialidades.DataTextField = "Nombre";
                 ddlEspecialidades.DataValueField = "ID";
                 ddlEspecialidades.DataBind();
-
             }
-            if(!IsPostBack && Request.QueryString["id"] != null)
+            if (!IsPostBack && Request.QueryString["id"] != null)
             {
                 listaTurnos = ctrlTurnos.Listar(Request.QueryString["id"]);
                 Turnos seleccionado = listaTurnos[0];
 
                 txtDNI.Text = seleccionado.Paciente.DNI;
+                txtDNI.Enabled = false;
 
                 ddlEspecialidades.SelectedValue = seleccionado.Especialidad.ID.ToString();
+                ddlEspecialidades.Enabled = false;
 
                 ddlMedicos.DataSource = ctrlMedicos.listar(seleccionado.Medico.ID.ToString());
                 ddlMedicos.DataTextField = "Apellido";
                 ddlMedicos.DataValueField = "ID";
                 ddlMedicos.DataBind();
+                ddlMedicos.Enabled = false;
 
                 repDias.DataSource = ctrlMedicos.ListarDias(int.Parse(seleccionado.Medico.ID.ToString()));
                 repDias.DataBind();
@@ -90,11 +92,11 @@ namespace Clinica
             ddlMedicos.DataBind();
 
             //Revisar
-            if(ddlMedicos.Items.Count != 0)
+            if (ddlMedicos.Items.Count != 0)
             {
                 ddlMedicos_SelectedIndexChanged(sender, e);
             }
-            if(ddlMedicos.Items.Count == 0)
+            if (ddlMedicos.Items.Count == 0)
             {
                 ddlHorarios.Items.Clear();
             }
@@ -136,7 +138,7 @@ namespace Clinica
                     txtValidar.Text = "No existen registros para el DNI " + txtDNI.Text;
                     txtAlta.Visible = true;
                     txtAlta.Text = "Registrar paciente";
-
+                    btnAceptar.Enabled = false;
                 }
                 else
                 {
@@ -150,6 +152,7 @@ namespace Clinica
                     //Se puede crear un metodo onlick con el boton y que quede seleccionado el paciente para registrar
                     seleccionar.Visible = true;
                     cancelar.Visible = true;
+                    btnAceptar.Enabled = true;
                 }
             }
             catch (Exception ex)
@@ -166,59 +169,69 @@ namespace Clinica
 
         protected void calDias_SelectionChanged(object sender, EventArgs e)
         {
-            if(calDias.SelectedDate < calDias.TodaysDate)
+            try
             {
-                lblValidarDia.Text = "La fecha ya pasó. Seleccione otra";
-                lblTest.Text = " ";
-                txtFecha.Text = " ";
+                if (calDias.SelectedDate < calDias.TodaysDate)
+                {
+                    lblValidarDia.Text = "La fecha ya pasó. Seleccione otra";
+                    lblTest.Text = " ";
+                    txtFecha.Text = " ";
+                    btnAceptar.Enabled = false;
+                }
+                else
+                {
+                    btnAceptar.Enabled = true;
+
+                    if (calDias.SelectedDate.DayOfWeek.ToString() == "Monday")
+                    {
+                        lblTest.Text = "Lunes";
+                    }
+                    if (calDias.SelectedDate.DayOfWeek.ToString() == "Tuesday")
+                    {
+                        lblTest.Text = "Martes";
+                    }
+                    if (calDias.SelectedDate.DayOfWeek.ToString() == "Wednesday")
+                    {
+                        lblTest.Text = "Miércoles";
+                    }
+                    if (calDias.SelectedDate.DayOfWeek.ToString() == "Thursday")
+                    {
+                        lblTest.Text = "Jueves";
+                    }
+                    if (calDias.SelectedDate.DayOfWeek.ToString() == "Friday")
+                    {
+                        lblTest.Text = "Viernes";
+                    }
+                    if (calDias.SelectedDate.DayOfWeek.ToString() == "Saturday")
+                    {
+                        lblTest.Text = "Sábado";
+                    }
+                    if (calDias.SelectedDate.DayOfWeek.ToString() == "Sunday")
+                    {
+                        lblTest.Text = "Domingo";
+                    }
+
+                    lblValidarDia.Text = " ";
+
+                    txtFecha.Text = calDias.SelectedDate.ToShortDateString();
+
+                    IDMedico = int.Parse(ddlMedicos.SelectedValue.ToString());
+
+                    List<int> horariosMedico = ctrlMedicos.ListarHorarios(IDMedico);
+                    List<int> horariosEntradaNoDisponibles = ctrlTurnos.HorariosNoDisponibles(IDMedico, DateTime.Parse(calDias.SelectedDate.ToShortDateString()));
+
+                    foreach (int horarios in horariosEntradaNoDisponibles)
+                    {
+                        horariosMedico.Remove(horarios);
+                    }
+
+                    ddlHorarios.DataSource = horariosMedico;
+                    ddlHorarios.DataBind();
+                }
             }
-            else
+            catch (Exception)
             {
-                if (calDias.SelectedDate.DayOfWeek.ToString() == "Monday")
-                {
-                    lblTest.Text = "Lunes";
-                }
-                if (calDias.SelectedDate.DayOfWeek.ToString() == "Tuesday")
-                {
-                    lblTest.Text = "Martes";
-                }
-                if (calDias.SelectedDate.DayOfWeek.ToString() == "Wednesday")
-                {
-                    lblTest.Text = "Miércoles";
-                }
-                if (calDias.SelectedDate.DayOfWeek.ToString() == "Thursday")
-                {
-                    lblTest.Text = "Jueves";
-                }
-                if (calDias.SelectedDate.DayOfWeek.ToString() == "Friday")
-                {
-                    lblTest.Text = "Viernes";
-                }
-                if (calDias.SelectedDate.DayOfWeek.ToString() == "Saturday")
-                {
-                    lblTest.Text = "Sábado";
-                }
-                if (calDias.SelectedDate.DayOfWeek.ToString() == "Sunday")
-                {
-                    lblTest.Text = "Domingo";
-                }
-
-                lblValidarDia.Text = " ";
-
-                txtFecha.Text = calDias.SelectedDate.ToShortDateString();
-
-                IDMedico = int.Parse(ddlMedicos.SelectedValue.ToString());
-
-                List<int> horariosMedico = ctrlMedicos.ListarHorarios(IDMedico);
-                List<int> horariosEntradaNoDisponibles = ctrlTurnos.HorariosNoDisponibles(IDMedico, DateTime.Parse(calDias.SelectedDate.ToShortDateString()));
-
-                foreach (int horarios in horariosEntradaNoDisponibles)
-                {
-                    horariosMedico.Remove(horarios);
-                }
-
-                ddlHorarios.DataSource = horariosMedico;
-                ddlHorarios.DataBind();
+                Session.Add("error", "Hubo un problema al seleccionar la fecha");
             }
         }
 
@@ -235,7 +248,7 @@ namespace Clinica
                 turnos.Paciente = new Pacientes();
                 foreach (Pacientes item in listaPacientes)
                 {
-                    if(item.DNI == txtDNI.Text)
+                    if (item.DNI == txtDNI.Text)
                     {
                         turnos.Paciente.ID = item.ID;
                     }
@@ -248,15 +261,35 @@ namespace Clinica
                 turnos.Fecha = DateTime.Parse(txtFecha.Text);
                 turnos.Observaciones = txtObservaciones.Text;
 
-                ctrlTurnos.AgregarTurno(turnos);
+                listaTurnos = ctrlTurnos.Listar();
+
+                foreach (Turnos item in listaTurnos)
+                {
+                    if (item.Paciente.ID == turnos.Paciente.ID && item.Fecha == turnos.Fecha)
+                    {
+                        Session.Add("error", "Este paciente ya tiene un turno este día");
+                        Response.Redirect("PagError.aspx", false);
+                        return;
+                    }
+                }
+
+                if (Request.QueryString["id"] != null)
+                {
+                    turnos.ID = int.Parse(Request.QueryString["id"]);
+                    ctrlTurnos.ModificarTurno(turnos);
+                }
+                else
+                {
+                    ctrlTurnos.AgregarTurno(turnos);
+                }
+
                 Response.Redirect("PagTurnos.aspx", false);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-
-                throw ex;
+                Session.Add("error", "No se pudo agregar el turno");
+                Response.Redirect("PagError.aspx");
             }
-        }        
-        
+        }
     }
 }

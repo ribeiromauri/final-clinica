@@ -136,7 +136,28 @@ namespace Controlador
             }
             catch (Exception ex)
             {
+                throw ex;
+            }
+        }
 
+        public void ModificarTurno(Turnos aux)
+        {
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setProcedimiento("SP_MODIFICAR_TURNO");
+                datos.setParametro("@IDMedico", aux.Medico.ID);
+                datos.setParametro("@IDPaciente", aux.Paciente.ID);
+                datos.setParametro("@IDEspecialidad", aux.Especialidad.ID);
+                datos.setParametro("@HoraEntrada", aux.HoraEntrada);
+                datos.setParametro("Fecha", aux.Fecha);
+                datos.setParametro("@Observaciones", aux.Observaciones);
+                datos.setParametro("@ID", aux.ID);
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
                 throw ex;
             }
         }

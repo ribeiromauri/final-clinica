@@ -411,3 +411,26 @@ BEGIN
 		ROLLBACK TRANSACTION
 	END CATCH
 END
+GO
+
+CREATE PROCEDURE SP_MODIFICAR_TURNO(
+	@ID int,
+	@IDMedico int,
+	@IDPaciente int,
+	@IDEspecialidad int,
+	@HoraEntrada int,
+	@Fecha date,
+	@Observaciones varchar(200)
+)
+AS
+BEGIN
+	BEGIN TRY
+		UPDATE TURNOS SET ID_MEDICO = @IDMedico, ID_PACIENTE = @IDPaciente, ID_ESPECIALIDAD = @IDEspecialidad, ENTRADA = @HoraEntrada, FECHA = @Fecha, OBSERVACIONES = @Observaciones
+		WHERE ID = @ID
+	END TRY
+	BEGIN CATCH
+		RAISERROR('No se pudo modificar el turno', 16, 1)
+		ROLLBACK TRANSACTION
+	END CATCH
+END
+GO

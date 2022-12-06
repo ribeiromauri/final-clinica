@@ -20,11 +20,11 @@
         <div style="display: inline-flex;">
             <label class="form-label">DNI Paciente</label>
             <asp:TextBox CssClass="form-control inputSize" ID="txtDNI" runat="server" required="required" TextMode="Number"></asp:TextBox>
-            <asp:Button CssClass="btn boton" ID="buscarPacinte" runat="server" Text="🔎" OnClick="buscarPaciente_Click" />
+            <asp:Button CssClass="btn boton" ID="buscarPacinte" runat="server" Text="🔎" OnClick="buscarPaciente_Click"/>
         </div>
         <div class="mb-3">
             <h5 style="text-align: center;">
-                <asp:Label ID="txtValidar" CssClass="h5" runat="server" Visible="false" /></h5>
+                <asp:Label ID="txtValidar" CssClass="h5" runat="server" Visible="false"/></h5>
             <a href="PagAltaPaciente.aspx">
                 <h5 style="text-align: center;">
                     <asp:Label ID="txtAlta" runat="server" Visible="false" /></h5>
