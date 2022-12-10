@@ -211,6 +211,15 @@ namespace Clinica
                         lblTest.Text = "Domingo";
                     }
 
+                    if (ValidarDia(lblTest.Text))
+                    {
+                        btnAceptar.Enabled = true;
+                    }
+                    else
+                    {
+                        btnAceptar.Enabled = false;
+                    }
+
                     lblValidarDia.Text = " ";
 
                     txtFecha.Text = calDias.SelectedDate.ToShortDateString();
@@ -233,6 +242,25 @@ namespace Clinica
             {
                 Session.Add("error", "Hubo un problema al seleccionar la fecha");
             }
+        }
+
+        protected bool ValidarDia(string dia)
+        {
+            List<HorariosTrabajo> dias = new List<HorariosTrabajo>();
+
+            IDMedico = int.Parse(ddlMedicos.SelectedItem.Value);
+
+            dias = ctrlMedicos.ListarDias(IDMedico);
+
+            foreach (HorariosTrabajo item in dias)
+            {
+                if(item.Dia.ToString() == dia)
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
 
         protected void btnAceptar_Click(object sender, EventArgs e)
