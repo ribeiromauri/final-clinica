@@ -52,5 +52,27 @@ namespace Clinica
             if ((bool)Estado) return true;
             return false;
         }
+
+        protected void btnBuscar_Click(object sender, EventArgs e)
+        {
+            txtBusqueda.Visible = false;
+            List<Turnos> listaFiltrada = new List<Turnos>();
+            if(Filtro.Text != "")
+            {
+                listaFiltrada = listaTurnos.FindAll(x => x.Medico.Nombre.ToLower().Contains(Filtro.Text.ToLower()) || x.Especialidad.Nombre.ToLower().Contains(Filtro.Text.ToLower()) || x.Paciente.Nombre.ToLower().Contains(Filtro.Text.ToLower()));
+                if (listaFiltrada.Any())
+                {
+                    repRepetidor.DataSource = listaFiltrada;
+                    repRepetidor.DataBind();
+                }
+                else
+                {
+                    txtBusqueda.Visible = true;
+                    txtBusqueda.Text = "No hay turnos que coincidan con tu busqueda";
+                    repRepetidor.DataSource = listaTurnos;
+                    repRepetidor.DataBind();
+                }
+            }
+        }
     }
 }

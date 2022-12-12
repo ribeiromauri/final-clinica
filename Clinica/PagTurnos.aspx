@@ -3,9 +3,27 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <style>
+        .boton {
+            background-color: #fff;
+            border-color: #fff;
+        }        
+        .barra{
+            display: flex;
+            flex-direction: row;
+        }
+    </style>
     <div style="font-family: Georgia (serif); font-size: xx-large; text-align: center; font-weight: 600" class="mb-3">
         <p>TURNOS MÉDICOS</p>
     </div>
+
+    <div class="barra">
+    <asp:TextBox CssClass="form-control me-1" placeholder="Buscar turno por paciente, especialidad o médico" runat="server" ID="Filtro"></asp:TextBox>
+    <asp:Button ID="btnBuscar" runat="server" Text="🔎" class="btn boton" onclick="btnBuscar_Click"/>
+    </div>
+
+    <h3 style="padding-top:20px; text-align: center;"><asp:Label ID="txtBusqueda" runat="server" /></h3>
+
     <table class="table table-striped table-bordered">
         <thead class="table-dark">
             <tr>
