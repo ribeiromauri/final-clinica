@@ -73,6 +73,13 @@ namespace Clinica
                     repRepetidor.DataBind();
                 }
             }
+            else
+            {
+                listaTurnos = ctrlTurnos.Listar();
+
+                repRepetidor.DataSource = listaTurnos;
+                repRepetidor.DataBind();
+            }
         }
     }
 }
