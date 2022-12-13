@@ -38,7 +38,24 @@ namespace Clinica
 
         protected void btnBuscar_Click(object sender, EventArgs e)
         {
-
+            txtBusqueda.Visible = false;
+            List<Pacientes> listaFiltrada = new List<Pacientes>();
+            if(Filtro.Text != "")
+            {
+                listaFiltrada = ListaPacientes.FindAll(x => x.Nombre.ToLower().Contains(Filtro.Text.ToLower()) || x.Apellido.ToLower().Contains(Filtro.Text.ToLower()) || x.DNI.Contains(Filtro.Text));
+                if (listaFiltrada.Any())
+                {
+                    repRepetidor.DataSource = listaFiltrada;
+                    repRepetidor.DataBind();
+                }
+                else
+                {
+                    txtBusqueda.Visible = true;
+                    txtBusqueda.Text = "No hay pacientes que coincidan con tu búsqueda";
+                    repRepetidor.DataSource = ListaPacientes;
+                    repRepetidor.DataBind();
+                }
+            }
         }
     }
 }

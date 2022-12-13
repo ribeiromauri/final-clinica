@@ -16,7 +16,8 @@ namespace Clinica
 
         public ControladorTurnos ctrlTurnos = new ControladorTurnos();
         protected void Page_Load(object sender, EventArgs e)
-        {
+        {           
+
             if (Session["usuario"] == null)
             {
                 Session.Add("error", "No hay ningún usuario logueado");
@@ -45,6 +46,7 @@ namespace Clinica
             {
                 repRepetidor.DataSource = listaTurnos;
                 repRepetidor.DataBind();
+                habilitarBotones(false);
             }
         }
         public bool TurnoVigente(object Estado)
@@ -57,7 +59,7 @@ namespace Clinica
         {
             txtBusqueda.Visible = false;
             List<Turnos> listaFiltrada = new List<Turnos>();
-            if(Filtro.Text != "")
+            if (Filtro.Text != "")
             {
                 listaFiltrada = listaTurnos.FindAll(x => x.Medico.Nombre.ToLower().Contains(Filtro.Text.ToLower()) || x.Especialidad.Nombre.ToLower().Contains(Filtro.Text.ToLower()) || x.Paciente.Nombre.ToLower().Contains(Filtro.Text.ToLower()));
                 if (listaFiltrada.Any())
@@ -72,6 +74,60 @@ namespace Clinica
                     repRepetidor.DataSource = listaTurnos;
                     repRepetidor.DataBind();
                 }
+            }
+        }
+
+        protected void btnFiltrar_Click(object sender, EventArgs e)
+        {
+            habilitarBotones(true);
+        }
+
+        protected void btnEnviar_Click(object sender, EventArgs e)
+        {
+            List<Turnos> listaFiltrada = new List<Turnos>();
+            if (rdVigente.Checked)
+            {
+                listaFiltrada = listaTurnos.FindAll(x => x.Estado == true);
+                if (listaFiltrada.Any())
+                {
+                    repRepetidor.DataSource = listaFiltrada;
+                    repRepetidor.DataBind();
+                }
+                else
+                {
+                    Response.Redirect("PagTurnos.aspx", true);
+                }
+            }
+            else
+            {
+                listaFiltrada = listaTurnos.FindAll(x => x.Estado == false);
+                if (listaFiltrada.Any())
+                {
+                    repRepetidor.DataSource = listaFiltrada;
+                    repRepetidor.DataBind();
+                }
+                else
+                {
+                    Response.Redirect("PagTurnos.aspx", true);
+                }
+            }
+        }
+
+        public void habilitarBotones(bool estado)
+        {
+            if (estado)
+            {
+                rdVigente.Visible = true;
+                rdFinalizados.Visible = true;
+                txtResultados.Visible = true;
+                btnEnviar.Visible = true;
+            }
+            else
+            {
+                rdVigente.Visible = false;
+                rdFinalizados.Visible = false;
+                txtResultados.Visible = false;
+                btnEnviar.Visible = false;
             }
         }
     }

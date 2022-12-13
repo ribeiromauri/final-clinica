@@ -3,6 +3,24 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <style>
+        .boton {
+            background-color: #fff;
+            border-color: #fff;
+        }        
+        .barra{
+            display: flex;
+            flex-direction: row;
+        }
+    </style>
+
+    <div class="barra">
+    <asp:TextBox CssClass="form-control me-1" placeholder="Buscar paciente por DNI, nombre o apellido" runat="server" ID="Filtro"></asp:TextBox>
+    <asp:Button ID="btnBuscar" runat="server" Text="🔎" class="btn boton" onclick="btnBuscar_Click"/>
+    </div>
+
+    <h3 style="padding-top:20px; text-align: center;"><asp:Label ID="txtBusqueda" runat="server" /></h3>
+
     <table class="table table-striped table-bordered">
         <thead class="table-dark">
             <tr>
