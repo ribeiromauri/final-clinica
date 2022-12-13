@@ -37,7 +37,7 @@
     <asp:RadioButton runat="server" ID="rdVigente" Text="Ver turnos vigentes" GroupName="Turnos" AutoPostBack="true"/><br />
     <asp:RadioButton runat="server" ID="rdFinalizados" Text="Ver turnos finalizados" GroupName="Turnos" AutoPostBack="true"/><br />
     <asp:Button runat="server" text="Filtrar" ID="btnEnviar" OnClick="btnEnviar_Click" CssClass="btn btn-primary"/>
-    <h5><asp:Label ID="txtResultados" runat="server" /></h5>
+    <!--<h5><asp:Label ID="txtResultados" runat="server" /></h5>-->
     
 
     <table class="table table-striped table-bordered">

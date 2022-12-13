@@ -126,14 +126,14 @@ namespace Clinica
             {
                 rdVigente.Visible = true;
                 rdFinalizados.Visible = true;
-                txtResultados.Visible = true;
+                //txtResultados.Visible = true;
                 btnEnviar.Visible = true;
             }
             else
             {
                 rdVigente.Visible = false;
                 rdFinalizados.Visible = false;
-                txtResultados.Visible = false;
+                //txtResultados.Visible = false;
                 btnEnviar.Visible = false;
             }
         }
