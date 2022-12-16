@@ -63,7 +63,7 @@
                         <td style="text-align: center"><%#Eval("Especialidad.Nombre") %></td>
                         <td style="text-align: center"><%#Eval("Fecha", "{0:dd/MM/yyyy}") %></td>
                         <td style="text-align: center"><%#Eval("HoraEntrada") %>hs</td>
-                        <td style="text-align: center;"><%# TurnoVigente(Eval("Estado")) ? "Vigente" : "Finalizado" %></td>
+                        <td style="text-align: center;"><%#TurnoVigente(Eval("Estado")) ? "Vigente" : (TurnoChequeado(Eval("Observaciones"))) ? "Chequeado" : "Finalizado" %></td>
                         <td>
                             <a href="PagAltaTurno.aspx?id=<%#Eval("ID") %>"><i class="fas fa-search-plus" style="color: black;"></i></a>
                         </td>
