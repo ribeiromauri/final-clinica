@@ -12,88 +12,102 @@
         .validaciones {
             display: inline-flex;
         }
-    </style>
-    <div style="font-family: Georgia (serif); font-size: xx-large; text-align: center; font-weight: 600" class="mb-3">
-        <p>TURNOS MÉDICOS</p>
-    </div>
-    <div style="display: flex; flex-direction: column; justify-content: center;" class="mb-3">
-        <div style="display: inline-flex;">
-            <label class="form-label">DNI Paciente</label>
-            <asp:TextBox CssClass="form-control inputSize" ID="txtDNI" runat="server" required="required" TextMode="Number"></asp:TextBox>
-            <asp:Button CssClass="btn boton" ID="buscarPacinte" runat="server" Text="🔎" OnClick="buscarPaciente_Click"/>
+
+        .contenedor {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            max-width: 500px;
+            margin-left: 30%;
+        }        
+
+        .titulo{
+            text-align: center;
+        }
+
+        .enLinea{
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+        }
+
+        .espacio{
+            margin-top: 8px;
+        }
+
+        tr th{
+            border-style: none;
+            list-style: none;
+        }
+    </style>    
+    <div class="contenedor">
+        <h3 class="titulo">ASIGNAR TURNO</h3>      
+    <label class="form-label">DNI Paciente</label>
+        <div class="enLinea">
+            <asp:TextBox ID="txtDNI" runat="server" required="required" TextMode="Number" CssClass="form-control inputSize"></asp:TextBox>
+            <asp:Button ID="buscarPacinte" runat="server" Text="🔎" OnClick="buscarPaciente_Click"/>
         </div>
-        <div class="mb-3">
-            <h5 style="text-align: center;">
-                <asp:Label ID="txtValidar" CssClass="h5" runat="server" Visible="false"/></h5>
-            <a href="PagAltaPaciente.aspx">
-                <h5 style="text-align: center;">
-                    <asp:Label ID="txtAlta" runat="server" Visible="false" /></h5>
-            </a>
-        </div>
+        
+            <h5><asp:Label ID="txtValidar" runat="server" Visible="false"/></h5>
+            <a href="PagAltaPaciente.aspx"><h5><asp:Label ID="txtAlta" runat="server" Visible="false" /></h5></a>
+        
         <div class="validaciones">
             <asp:RadioButtonList runat="server" ID="paciente" Visible="false"></asp:RadioButtonList>
             <asp:Button runat="server" ID="seleccionar" Visible="false" Text="✔" CssClass="btn boton" />
             <asp:Button runat="server" ID="cancelar" Visible="false" Text="✖" CssClass="btn boton" OnClick="cancelar_Click" />
         </div>
-        <div class="mb-3">
-            <label class="form-label">Especialidad</label>
-            <div>
-                <asp:DropDownList ID="ddlEspecialidades" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlEspecialidades_SelectedIndexChanged"></asp:DropDownList>
-            </div>
-        </div>
-        <div class="mb-3">
-            <label class="form-label">Médico</label>
-            <div>
-                <asp:DropDownList ID="ddlMedicos" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlMedicos_SelectedIndexChanged"></asp:DropDownList>
-            </div>
-        </div>
+        
+       <label class="form-label">Especialidad</label>
+       <div>
+           <asp:DropDownList ID="ddlEspecialidades" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlEspecialidades_SelectedIndexChanged" CssClass="form-control inputSize"></asp:DropDownList>
+       </div>
+        
+       <label class="form-label">Médico</label>
+       <div>
+          <asp:DropDownList ID="ddlMedicos" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlMedicos_SelectedIndexChanged" CssClass="form-control inputSize"></asp:DropDownList>
+       </div>
+        
         <%if (ValidarDias)
             { %>
-        <div class="mb-3">
+        
             <table class="table-striped table-bordered">
                 <thead>
                     <tr>
-                        <th scope="col" style="text-align: center">Dias Laborales</th>
+                        <th scope="col" class="espacio">Dias Laborales</th>
                     </tr>
                 </thead>
                 <tbody>
                     <asp:Repeater runat="server" ID="repDias">
                         <ItemTemplate>
                             <tr>
-                                <td scope="row" style="text-align: center"><%#Eval("Dia") %></td>
+                                <td scope="row"  style="text-align: center;"><%#Eval("Dia") %></td>
                             </tr>
                         </ItemTemplate>
                     </asp:Repeater>
                 </tbody>
             </table>
-        </div>
+        
         <%} %>
-        <div class="mb-3">
-            <asp:Calendar ID="calDias" runat="server" OnSelectionChanged="calDias_SelectionChanged"></asp:Calendar>
-            <asp:Label ID="lblValidarDia" runat="server" Text=" "></asp:Label>
+        
+        <label class="form-label">Elegir día</label>
+        <asp:Calendar ID="calDias" runat="server" OnSelectionChanged="calDias_SelectionChanged"></asp:Calendar>
+        <asp:Label ID="lblValidarDia" runat="server" Text=" "></asp:Label>
+        <asp:Label ID="lblTest" runat="server" Text=" "></asp:Label>
+        
+        <label class="form-label">Fecha Turno</label>
+        <div>
+          <asp:TextBox ID="txtFecha" runat="server" ReadOnly="true" CssClass="form-control inputSize"></asp:TextBox>
         </div>
-        <div class="mb-3">
-            <asp:Label ID="lblTest" runat="server" Text=" "></asp:Label>
+        
+        <label class="form-label">Horario Turno</label>
+        <div class="dropdown">
+           <asp:DropDownList ID="ddlHorarios" runat="server" CssClass="form-control inputSize"></asp:DropDownList>
         </div>
-        <div class="mb-3">
-            <label class="form-label">Fecha Turno</label>
-            <div>
-                <asp:TextBox ID="txtFecha" runat="server" ReadOnly="true"></asp:TextBox>
-            </div>
-        </div>
-        <div class="mb-3">
-            <label class="form-label">Horario Turno</label>
-            <div>
-                <asp:DropDownList ID="ddlHorarios" runat="server"></asp:DropDownList>
-            </div>
-        </div>
-        <div class="mb-3">
-            <label class="form-label">Observaciones</label>
-            <asp:TextBox CssClass="form-control inputSize" ID="txtObservaciones" runat="server"></asp:TextBox>
-        </div>
-        <div class="mb-3" style="margin-top: 30px">
-            <asp:Button ID="btnAceptar" runat="server" Text="Agregar Turno" CssClass="btn btn-success" OnClick="btnAceptar_Click"/>
-            <a href="PagTurnos.aspx" class="btn btn-danger">Cancelar</a>
-        </div>
+        
+        <label>Observaciones</label>
+        <asp:TextBox ID="txtObservaciones" runat="server" CssClass="form-control inputSize"></asp:TextBox>
+       
+        <asp:Button ID="btnAceptar" runat="server" Text="Agregar Turno" CssClass="btn btn-success espacio" OnClick="btnAceptar_Click"/>
+        <a href="PagTurnos.aspx" class="btn btn-danger espacio">Cancelar</a>      
     </div>
 </asp:Content>
