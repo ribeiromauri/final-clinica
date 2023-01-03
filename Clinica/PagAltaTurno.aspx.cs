@@ -29,7 +29,7 @@ namespace Clinica
                 Session.Add("error", "No hay ningún usuario logueado");
                 Response.Redirect("PagError.aspx");
             }
-            if (((Usuarios)Session["usuario"]).Tipo == TipoUsuario.MEDICO)
+            if (((Usuarios)Session["usuario"]).Tipo == TipoUsuario.MEDICO && Request.QueryString["id"] == null)
             {
                 Session.Add("error", "No tenés permisos para ingresar a esta pantalla");
                 Response.Redirect("PagError.aspx", false);
@@ -78,7 +78,19 @@ namespace Clinica
                 ddlHorarios.SelectedValue = seleccionado.HoraEntrada.ToString();
 
                 txtObservaciones.Text = seleccionado.Observaciones;
-
+            }
+            if (((Usuarios)Session["usuario"]).Tipo == TipoUsuario.MEDICO && Request.QueryString["id"] != null)
+            {
+                txtObservaciones.Enabled = true;
+                txtDNI.Enabled = false;
+                ddlEspecialidades.Enabled = false;
+                ddlMedicos.Enabled = false;
+                ddlHorarios.Enabled = false;
+                calDias.Enabled = false;
+            }
+            else
+            {
+                txtObservaciones.Enabled = false;
             }
         }
 
@@ -91,7 +103,6 @@ namespace Clinica
             ddlMedicos.DataValueField = "ID";
             ddlMedicos.DataBind();
 
-            //Revisar
             if (ddlMedicos.Items.Count != 0)
             {
                 ddlMedicos_SelectedIndexChanged(sender, e);
@@ -254,7 +265,7 @@ namespace Clinica
 
             foreach (HorariosTrabajo item in dias)
             {
-                if(item.Dia.ToString() == dia)
+                if (item.Dia.ToString() == dia)
                 {
                     return true;
                 }
@@ -291,22 +302,25 @@ namespace Clinica
 
                 listaTurnos = ctrlTurnos.Listar();
 
-                foreach (Turnos item in listaTurnos)
-                {
-                    if (item.Paciente.ID == turnos.Paciente.ID && item.Fecha == turnos.Fecha)
-                    {
-                        Session.Add("error", "Este paciente ya tiene un turno este día");
-                        Response.Redirect("PagError.aspx", false);
-                        return;
-                    }
-                }
-
                 if (Request.QueryString["id"] != null)
                 {
                     turnos.ID = int.Parse(Request.QueryString["id"]);
                     ctrlTurnos.ModificarTurno(turnos);
                 }
                 else
+                {
+                    foreach (Turnos item in listaTurnos)
+                    {
+                        if (item.Paciente.ID == turnos.Paciente.ID && item.Fecha == turnos.Fecha)
+                        {
+                            Session.Add("error", "Este paciente ya tiene un turno este día");
+                            Response.Redirect("PagError.aspx", false);
+                            return;
+                        }
+                    }
+                }
+
+                if(Request.QueryString["id"] == null)
                 {
                     ctrlTurnos.AgregarTurno(turnos);
                 }

@@ -55,6 +55,12 @@ namespace Clinica
             return false;
         }
 
+        public bool TurnoChequeado(object Observacion)
+        {
+            if ((string)Observacion != "") return true;
+            return false;
+        }
+
         protected void btnBuscar_Click(object sender, EventArgs e)
         {
             txtBusqueda.Visible = false;
